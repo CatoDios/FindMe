@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/yellow"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/imgCliente"
+                    android:src="@drawable/logo_samer"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Android Studio"
+                        android:id="@+id/tv_name"
+                        android:layout_marginStart="20dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Android Studio"
+                        android:layout_marginStart="20dp"
+                        android:id="@+id/tv_email"
+                        android:textSize="11dp" />
+
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

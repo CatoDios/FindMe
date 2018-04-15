@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ac_pedidos"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Pedidos" />
+    <item
+        android:id="@+id/ac_historial"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Historial" />
+    <item
+        android:id="@+id/ac_favoritos"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Favoritos" />
+
+    <item
+        android:id="@+id/ac_seguimiento"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Seguimiento" />
+    <item
+        android:id="@+id/ac_cuentas"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Cuentas bancarias" />
+
+    <item
+        android:id="@+id/ac_ayuda"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Ayuda" />
+
+    <item
+        android:id="@+id/ac_contacto"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Contacto" />
+    <item
+        android:id="@+id/ac_cerrar_sesion"
+        android:icon="@drawable/googleg_standard_color_18"
+        android:title="Cerrar Sesión" />
+
+</menu>
