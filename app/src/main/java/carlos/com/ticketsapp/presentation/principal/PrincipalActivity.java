@@ -1,9 +1,11 @@
 package carlos.com.ticketsapp.presentation.principal;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
 
@@ -28,6 +32,9 @@ import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.UserEntity;
 import carlos.com.ticketsapp.presentation.auth.LoginActivity;
+import carlos.com.ticketsapp.presentation.principal.BottomBar.HistorialFragment;
+import carlos.com.ticketsapp.presentation.principal.BottomBar.HoyFragment;
+import carlos.com.ticketsapp.presentation.principal.BottomBar.SemanaFragment;
 import carlos.com.ticketsapp.presentation.profile.ProfileActivity;
 import carlos.com.ticketsapp.presentation.splash.InicioActivity;
 import carlos.com.ticketsapp.utils.ActivityUtils;
@@ -58,6 +65,27 @@ public class PrincipalActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mSessionManager = new SessionManager(this);
+        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                if (tabId == R.id.tab_hoy) {
+                    HoyFragment hoyFragment=new HoyFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.body,hoyFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
+                }
+                if (tabId == R.id.tab_semana) {
+                    SemanaFragment semanaFragment=new SemanaFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.body,semanaFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
+                }
+                if (tabId == R.id.tab_historial) {
+                    HistorialFragment historialFragment=new HistorialFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.body,historialFragment)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack(null).commit();
+                }
+            }
+        });
 
         /**
          *Setup the DrawerLayout and NavigationView
@@ -98,7 +126,7 @@ public class PrincipalActivity extends BaseActivity {
 
         initHeader();
         //findViewById(R.id.appbar).bringToFront();
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
         //findViewById(R.id.appbar).setOutlineProvider(null);
@@ -113,12 +141,12 @@ public class PrincipalActivity extends BaseActivity {
         }*/
 
 
-        if (fragment == null) {
+       /* if (fragment == null) {
             fragment = PrincipalFragment.newInstance();
 
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     fragment, R.id.body);
-        }
+        }*/
         //Fabric.with(this, new Crashlytics());
 
     }
@@ -133,9 +161,6 @@ public class PrincipalActivity extends BaseActivity {
                         menuItem.setCheckable(false);
 
                         switch (menuItem.getItemId()) {
-                            case R.id.ac_pedidos:
-                                next(PrincipalActivity.this, null, InicioActivity.class, false);
-                                break;
 
                             case R.id.ac_cerrar_sesion:
                                 CloseSession();

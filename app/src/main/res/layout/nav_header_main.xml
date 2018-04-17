@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/yellow"
+    android:background="@drawable/fondo_header"
     android:orientation="vertical"
     >
 
@@ -28,7 +28,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/imgCliente"
-                    android:src="@drawable/logo_samer"
+                    android:src="@drawable/user"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="20dp"/>
 
@@ -39,6 +39,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Android Studio"
@@ -48,9 +49,10 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Android Studio"
+                        android:text="Ccopa Mamani"
                         android:layout_marginStart="20dp"
                         android:id="@+id/tv_email"
                         android:textSize="11dp" />

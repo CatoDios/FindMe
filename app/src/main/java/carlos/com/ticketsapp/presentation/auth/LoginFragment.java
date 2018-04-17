@@ -38,8 +38,7 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
     private boolean isLoading=false;
     Unbinder unbinder;
     private Validator validator;
-    @BindView(R.id.tv_registro)
-    TextView tv_registro;
+
 
     @NotEmpty(message = " ")
     @Email(message = "Email inválido")
@@ -75,13 +74,11 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
 
     }
 
-    @OnClick({R.id.tv_registro,R.id.btn_iniciar_sesion})
+    @OnClick(R.id.btn_iniciar_sesion)
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
-            case R.id.tv_registro:
-                nextActivity(getActivity(), null, RegistroActivity.class, false);
-                break;
+
             case R.id.btn_iniciar_sesion:
                 validator.validate();
                 break;

@@ -16,7 +16,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@color/colorPrimaryDark"
+            android:src="@drawable/user"
             android:elevation="20dp"/>
 
         <LinearLayout
@@ -39,7 +39,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Karla"/>
+                    android:text="Jhunior"/>
             </RelativeLayout>
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:text="Kchera@gmail.com"
+                android:text="ccopa@gmail.com"
                 />
             <TextView
                 android:layout_marginLeft="50dp"

@@ -29,7 +29,7 @@ public class LoadActivity extends BaseActivity {
             next(this,null, PrincipalActivity.class, true);
         }else{
             //Sin logeo aún
-            next(this,null, PrincipalActivity.class, true);
+            next(this,null, LoginActivity.class, true);
         }
     }
 }

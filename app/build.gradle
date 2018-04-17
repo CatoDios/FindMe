@@ -49,4 +49,7 @@ dependencies {
     //Image Circle
     compile 'de.hdodenhof:circleimageview:2.1.0'
 
+    //Bottom bar
+    compile 'com.roughike:bottom-bar:2.3.1'
+
 }

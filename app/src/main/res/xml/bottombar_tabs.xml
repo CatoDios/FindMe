@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        barColorWhenSelected="#009688"
+        id="@+id/tab_hoy"
+        icon="@drawable/ic_free_breakfast_black_24dp"
+        title="Hoy" />
+    <tab
+        barColorWhenSelected="#673AB7"
+        id="@+id/tab_semana"
+        icon="@drawable/ic_kitchen_black_24dp"
+        title="Semana" />
+    <tab
+        barColorWhenSelected="#F44336"
+        id="@+id/tab_historial"
+        icon="@drawable/ic_all_inclusive_black_24dp"
+        title="Historial" />
+</tabs>

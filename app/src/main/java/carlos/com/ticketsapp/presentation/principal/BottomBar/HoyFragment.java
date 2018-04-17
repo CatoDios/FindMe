@@ -1,4 +1,4 @@
-package carlos.com.ticketsapp.presentation.principal;
+package carlos.com.ticketsapp.presentation.principal.BottomBar;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,21 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseFragment;
+import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 
-
-
-/**
- * Created by kath on 09/04/18.
- */
-
-public class PrincipalFragment extends BaseFragment {
+public class HoyFragment  extends BaseFragment{
     Unbinder unbinder;
 
     public static PrincipalFragment newInstance() {
@@ -30,7 +22,7 @@ public class PrincipalFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_principal, container, false);
+        View root = inflater.inflate(R.layout.fragment_hoy, container, false);
         unbinder = ButterKnife.bind(this, root);
         return root;
     }

@@ -17,4 +17,8 @@
         Support library compatibility
         <item name="elevation">0dp</item>
     </style>
+
+    <style name="bb">
+        <item name="android:textColor">#fff</item>
+    </style>
 </resources>

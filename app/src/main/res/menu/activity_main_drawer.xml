@@ -1,39 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/ac_pedidos"
-        android:icon="@drawable/googleg_standard_color_18"
-        android:title="Pedidos" />
+        android:id="@+id/ac_menu"
+        android:icon="@drawable/ic_room_service_black_24dp"
+        android:title="Menú" />
     <item
-        android:id="@+id/ac_historial"
-        android:icon="@drawable/googleg_standard_color_18"
-        android:title="Historial" />
+        android:id="@+id/ac_perfil"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Perfil" />
     <item
-        android:id="@+id/ac_favoritos"
-        android:icon="@drawable/googleg_standard_color_18"
-        android:title="Favoritos" />
+        android:id="@+id/ac_Pedido"
+        android:icon="@drawable/ic_query_builder_black_24dp"
+        android:title="Pedido" />
 
     <item
-        android:id="@+id/ac_seguimiento"
-        android:icon="@drawable/googleg_standard_color_18"
-        android:title="Seguimiento" />
-    <item
-        android:id="@+id/ac_cuentas"
-        android:icon="@drawable/googleg_standard_color_18"
-        android:title="Cuentas bancarias" />
-
+        android:id="@+id/ac_notificaciones"
+        android:icon="@drawable/ic_announcement_black_24dp"
+        android:title="Notificaciones" />
     <item
         android:id="@+id/ac_ayuda"
-        android:icon="@drawable/googleg_standard_color_18"
+        android:icon="@drawable/ic_headset_mic_black_24dp"
         android:title="Ayuda" />
 
     <item
-        android:id="@+id/ac_contacto"
-        android:icon="@drawable/googleg_standard_color_18"
-        android:title="Contacto" />
+        android:id="@+id/ac_contactenos"
+        android:icon="@drawable/ic_phone_black_24dp"
+        android:title="Contáctenos" />
+
+
     <item
         android:id="@+id/ac_cerrar_sesion"
-        android:icon="@drawable/googleg_standard_color_18"
+        android:icon="@drawable/ic_close_black_24dp"
         android:title="Cerrar Sesión" />
 
 </menu>
