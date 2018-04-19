@@ -16,6 +16,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions 'default'
+    productFlavors {
+        prod {
+            dimension 'default'
+            buildConfigField 'String', 'BASE', '"https://tick-app-zuul.herokuapp.com/"'
+            //signingConfig signingConfigs.config
+        }
+        mock {
+            dimension 'default'
+            buildConfigField 'String', 'BASE', '"https://tick-app-zuul.herokuapp.com/"'
+            applicationIdSuffix = ".test"
+        }
+    }
+// Remove mockRelease as it's not needed.
+    android.variantFilter { variant ->
+        if (variant.buildType.name == 'release'
+                && variant.getFlavors().get(0).name == 'mock') {
+            variant.setIgnore(true);
+        }
+    }
+
 }
 
 dependencies {
@@ -51,5 +72,12 @@ dependencies {
 
     //Bottom bar
     compile 'com.roughike:bottom-bar:2.3.1'
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //converter json
+    compile 'com.google.code.gson:gson:2.8.2'
+    //Interceptor
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
 }

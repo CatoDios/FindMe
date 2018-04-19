@@ -38,6 +38,10 @@ public class LoginPresenter implements LoginContract.Presenter {
         // hacer  token y get profile
         AccessTokenEntity accessTokenEntity=new AccessTokenEntity();
         accessTokenEntity.setAccess_token("token");
+
+
+
+
         UserEntity userEntity=new UserEntity();
         userEntity.setCorreo(user);
         userEntity.setContraseña(pass);
