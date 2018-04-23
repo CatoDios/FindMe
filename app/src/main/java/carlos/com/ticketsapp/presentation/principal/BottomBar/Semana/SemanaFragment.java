@@ -1,4 +1,4 @@
-package carlos.com.ticketsapp.presentation.principal.BottomBar;
+package carlos.com.ticketsapp.presentation.principal.BottomBar.Semana;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,7 @@ import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 
-public class HoyFragment  extends BaseFragment{
+public class SemanaFragment extends BaseFragment{
     Unbinder unbinder;
 
     public static PrincipalFragment newInstance() {
@@ -22,22 +22,8 @@ public class HoyFragment  extends BaseFragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_hoy, container, false);
+        View root = inflater.inflate(R.layout.fragment_semana, container, false);
         unbinder = ButterKnife.bind(this, root);
         return root;
     }
-
-
-    /*@OnClick({R.id.btn_categorias,R.id.btn_marcas,R.id.btn_recomendados})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-
-            case R.id.btn_categorias:
-                nextActivity(getActivity(), null, CategoriasActivity.class, false);
-                break;
-            case R.id.btn_recomendados:
-                nextActivity(getActivity(), null, RecomendadosActivity.class, false);
-                break;
-        }
-    }*/
 }

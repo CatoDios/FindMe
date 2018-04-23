@@ -32,12 +32,11 @@ import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.UserEntity;
 import carlos.com.ticketsapp.presentation.auth.LoginActivity;
-import carlos.com.ticketsapp.presentation.principal.BottomBar.HistorialFragment;
-import carlos.com.ticketsapp.presentation.principal.BottomBar.HoyFragment;
-import carlos.com.ticketsapp.presentation.principal.BottomBar.SemanaFragment;
+import carlos.com.ticketsapp.presentation.principal.BottomBar.Historial.HistorialFragment;
+import carlos.com.ticketsapp.presentation.principal.BottomBar.Hoy.HoyFragment;
+import carlos.com.ticketsapp.presentation.principal.BottomBar.Semana.SemanaFragment;
 import carlos.com.ticketsapp.presentation.profile.ProfileActivity;
 import carlos.com.ticketsapp.presentation.splash.InicioActivity;
-import carlos.com.ticketsapp.utils.ActivityUtils;
 
 /**
  * Created by kath on 09/04/18.
