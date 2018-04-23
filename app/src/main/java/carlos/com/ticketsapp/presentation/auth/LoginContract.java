@@ -11,6 +11,8 @@ import carlos.com.ticketsapp.core.BaseView;
 public interface LoginContract {
     interface View extends BaseView<Presenter> {
         void loginSuccesful();
+        boolean isActive();
+        void errorLogin(String msg);
     }
 
     interface  Presenter extends BasePresenter {

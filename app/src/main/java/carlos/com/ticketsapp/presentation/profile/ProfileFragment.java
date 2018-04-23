@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import carlos.com.ticketsapp.R;
@@ -18,6 +20,16 @@ public class ProfileFragment extends BaseFragment {
     SessionManager mSessionManager;
     Unbinder unbinder;
 
+    @BindView(R.id.tv_nombre)
+    TextView tvNombre;
+    @BindView(R.id.tv_codigo)
+    TextView tvCodigo;
+    @BindView(R.id.tv_dni)
+    TextView tvDNI;
+    @BindView(R.id.tv_correo)
+    TextView tvCorreo;
+    @BindView(R.id.tv_telefono)
+    TextView tvTelefono;
 
     private UserEntity mUser;
 
@@ -40,6 +52,8 @@ public class ProfileFragment extends BaseFragment {
         mSessionManager = new SessionManager(getContext());
         mUser=mSessionManager.getUserEntity();
         //Se inicializan datos
+
+
     }
 
     @Nullable
@@ -52,7 +66,13 @@ public class ProfileFragment extends BaseFragment {
         return root;
     }
 
-
-
-
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        tvNombre.setText(mUser.getNombres());
+        tvCodigo.setText(mUser.getCodigo());
+        tvDNI.setText(mUser.getDni());
+        tvCorreo.setText(mUser.getUser()+"@unmsm.edu.pe");
+        tvTelefono.setText(mUser.getTelefono());
+    }
 }

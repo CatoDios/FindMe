@@ -48,11 +48,14 @@ public class PrincipalActivity extends BaseActivity {
     NavigationView navigationView;
     SessionManager mSessionManager;
 
+
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     private ActionBarDrawerToggle mDrawerToggle;
     public TextView tv_username;
+    public TextView tv_codigo;
     public TextView tv_placa;
     public TextView tvEmail;
     public UserEntity mUser;
@@ -119,10 +122,10 @@ public class PrincipalActivity extends BaseActivity {
         mDrawerToggle.syncState();
         View header = navigationView.getHeaderView(0);
 
-
+        tv_codigo=(TextView) header.findViewById(R.id.tv_codigo);
         tv_username = (TextView) header.findViewById(R.id.tv_name);
         imageView = (ImageView) header.findViewById(R.id.imgCliente);
-        tvEmail = (TextView) header.findViewById(R.id.tv_email);
+
 
         initHeader();
         //findViewById(R.id.appbar).bringToFront();
@@ -220,7 +223,9 @@ public class PrincipalActivity extends BaseActivity {
         mUser = mSessionManager.getUserEntity();
 
         if (mUser != null) {
-            tv_username.setText(mUser.getCorreo());
+            tv_username.setText(mUser.getNombres()+" "+mUser.getApePat());
+            tv_codigo.setText(mUser.getCodigo());
+
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

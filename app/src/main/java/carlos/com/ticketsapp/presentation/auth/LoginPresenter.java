@@ -5,6 +5,11 @@ import android.content.Context;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.AccessTokenEntity;
 import carlos.com.ticketsapp.data.models.UserEntity;
+import carlos.com.ticketsapp.data.remote.ServiceFactory;
+import carlos.com.ticketsapp.data.remote.request.GetRequest;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -36,17 +41,44 @@ public class LoginPresenter implements LoginContract.Presenter {
         user=username;
         pass=password;
         // hacer  token y get profile
-        AccessTokenEntity accessTokenEntity=new AccessTokenEntity();
+        final AccessTokenEntity accessTokenEntity=new AccessTokenEntity();
         accessTokenEntity.setAccess_token("token");
+        GetRequest loginService =
+                ServiceFactory.createService(GetRequest.class);
+        Call<UserEntity> call = loginService.getUser(username,password);
+        mView.setLoadingIndicator(true);
+        call.enqueue(new Callback<UserEntity>() {
+            @Override
+            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                if(!mView.isActive()){
+                    return;
+                }
+                mView.setLoadingIndicator(false);
+
+                if (response.isSuccessful()) {
+                    openSession(accessTokenEntity,response.body());
+                } else {
+                    mView.setLoadingIndicator(false);
+                    mView.errorLogin("login fallido");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserEntity> call, Throwable t) {
+                if(!mView.isActive()){
+                    return;
+                }
+                mView.setLoadingIndicator(false);
+                mView.errorLogin("Fallo al traer datos, comunicarse con su administrador");
+            }
+        });
 
 
 
 
-        UserEntity userEntity=new UserEntity();
-        userEntity.setCorreo(user);
-        userEntity.setContraseña(pass);
 
-        openSession(accessTokenEntity,userEntity);
+
+
 
 
     }

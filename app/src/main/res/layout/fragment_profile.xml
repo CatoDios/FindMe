@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
+                    android:id="@+id/tv_nombre"
                     android:textSize="30sp"
                     android:layout_alignParentRight="true"
                     android:textColor="@color/white"
@@ -43,6 +44,7 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/tv_codigo"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
@@ -52,6 +54,7 @@
                 android:text="45663983223"
                 />
             <TextView
+                android:id="@+id/tv_dni"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
@@ -61,6 +64,7 @@
                 android:text="222 5555"
                 />
             <TextView
+                android:id="@+id/tv_correo"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
@@ -70,6 +74,7 @@
                 android:text="ccopa@gmail.com"
                 />
             <TextView
+                android:id="@+id/tv_telefono"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"

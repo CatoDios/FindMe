@@ -7,5 +7,5 @@ import retrofit2.http.Path;
 
 public interface GetRequest {
     @GET("tick-app-client/usuario/leer/{correo}/{contra}")
-    Call<UserEntity>getUser(@Path("correo") String correo,@Path("")String contra);
+    Call<UserEntity>getUser(@Path("correo") String correo,@Path("contra")String contra);
 }

@@ -22,10 +22,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import carlos.com.ticketsapp.R;
+import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
 import carlos.com.ticketsapp.presentation.registro.RegistroActivity;
+import carlos.com.ticketsapp.utils.ProgressDialogCustom;
 
 /**
  * Created by kath on 06/04/18.
@@ -33,6 +35,8 @@ import carlos.com.ticketsapp.presentation.registro.RegistroActivity;
 
 public class LoginFragment extends BaseFragment implements Validator.ValidationListener,LoginContract.View {
 
+
+    private ProgressDialogCustom mProgressDialogCustom;
     private LoginContract.Presenter mPresenter;
     private SessionManager mSessionManager;
     private boolean isLoading=false;
@@ -40,8 +44,8 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
     private Validator validator;
 
 
-    @NotEmpty(message = " ")
-    @Email(message = "Email inválido")
+    @NotEmpty(message = "No vacio")
+
     @BindView(R.id.et_email)
     EditText etEmail;
 
@@ -69,6 +73,7 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mProgressDialogCustom = new ProgressDialogCustom(getContext(), "Ingresando...");
         validator=new Validator(this);
         validator.setValidationListener(this);
 
@@ -112,22 +117,41 @@ public class LoginFragment extends BaseFragment implements Validator.ValidationL
     }
 
     @Override
+    public boolean isActive() {
+        return isAdded();
+    }
+
+    @Override
+    public void errorLogin(String msg) {
+        showErrorMessage(msg);
+    }
+
+    @Override
     public void setPresenter(LoginContract.Presenter mPresenter) {
         this.mPresenter=mPresenter;
     }
 
     @Override
     public void setLoadingIndicator(boolean active) {
-
+        if (getView() == null) {
+            return;
+        }
+        if (active) {
+            mProgressDialogCustom.show();
+        } else {
+            if (mProgressDialogCustom.isShowing()) {
+                mProgressDialogCustom.dismiss();
+            }
+        }
     }
 
     @Override
     public void showMessage(String message) {
-
+        ((BaseActivity) getActivity()).showMessage(message);
     }
 
     @Override
     public void showErrorMessage(String message) {
-
+        ((BaseActivity) getActivity()).showMessageError(message);
     }
 }
