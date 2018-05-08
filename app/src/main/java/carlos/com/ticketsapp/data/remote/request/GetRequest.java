@@ -1,5 +1,8 @@
 package carlos.com.ticketsapp.data.remote.request;
 
+import java.util.ArrayList;
+
+import carlos.com.ticketsapp.data.models.ComidaEntity;
 import carlos.com.ticketsapp.data.models.MenuEntity;
 import carlos.com.ticketsapp.data.models.UserEntity;
 import retrofit2.Call;
@@ -12,4 +15,7 @@ public interface GetRequest {
 
     @GET("")
     Call<MenuEntity>getMenuHoy();
+
+    @GET("")
+    Call<ArrayList<ComidaEntity>> getMenuSemana();
 }
