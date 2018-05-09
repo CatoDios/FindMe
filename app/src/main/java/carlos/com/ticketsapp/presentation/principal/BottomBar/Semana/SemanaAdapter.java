@@ -22,11 +22,11 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
     private Context context;
     private ItemSemana itemSemana;
 
-    public SemanaAdapter(ArrayList<ComidaEntity> comidaEntities,Context context) {
+    public SemanaAdapter(ArrayList<ComidaEntity> comidaEntities,Context context,ItemSemana itemSemana) {
         super(context);
         setItems(comidaEntities);
         this.context=context;
-
+        this.itemSemana = itemSemana;
     }
 
     public ArrayList<ComidaEntity> getItems() {
@@ -49,17 +49,14 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
     @Override
     public void bindYourViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ComidaEntity comidaEntity=getItems().get(position);
-        final Comida almuerzo= comidaEntity.getComidas().get(1);
-        final Comida cena= comidaEntity.getComidas().get(2);
+
         ((ViewHolder) holder).tvDia.setText(comidaEntity.getDia());
 
-        ((ViewHolder) holder).tvAlm1.setText(almuerzo.getDescripcion());
-        ((ViewHolder) holder).tvAlm2.setText(String.valueOf(almuerzo.getNumeroRaciones())+" raciones");
-        ((ViewHolder) holder).tvAlm3.setText(almuerzo.getInicioReserva());
+        ((ViewHolder) holder).tvTipo.setText(comidaEntity.getComidaTipo());
+        ((ViewHolder) holder).tvAlm2.setText(comidaEntity.getNombre());
+        ((ViewHolder) holder).tvAlm3.setText(String.valueOf(comidaEntity.getNumRaciones()));
+        ((ViewHolder) holder).tvAlm1.setText(comidaEntity.getComidaTipo());
 
-        ((ViewHolder) holder).tvCen1.setText(cena.getDescripcion());
-        ((ViewHolder) holder).tvCen1.setText(String.valueOf(cena.getNumeroRaciones())+" raciones");
-        ((ViewHolder) holder).tvCen1.setText(cena.getInicioReserva());
     }
 
     @Override
@@ -72,6 +69,8 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
 
         @BindView(R.id.tv_dia)
         TextView tvDia;
+        @BindView(R.id.tipo)
+        TextView tvTipo;
 
         @BindView(R.id.tv_alm_1)
         TextView tvAlm1;
@@ -80,12 +79,7 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
         @BindView(R.id.tv_alm_3)
         TextView tvAlm3;
 
-        @BindView(R.id.tv_cen_1)
-        TextView tvCen1;
-        @BindView(R.id.tv_cen_2)
-        TextView tvCen2;
-        @BindView(R.id.tv_cen_3)
-        TextView tvCen3;
+
 
         private OnClickListListener onClickListListener;
 

@@ -1,5 +1,7 @@
 package carlos.com.ticketsapp.presentation.principal.BottomBar.Semana;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import carlos.com.ticketsapp.data.models.ComidaEntity;
@@ -12,6 +14,13 @@ import retrofit2.Response;
 public class SemanaPresenter implements SemanaContract.Presenter,ItemSemana {
 
     private SemanaContract.View mView;
+    private Context context;
+
+    public SemanaPresenter(SemanaContract.View mView, Context context) {
+        this.mView = mView;
+        this.context = context;
+        this.mView.setPresenter(this);
+    }
 
     @Override
     public void start() {

@@ -6,6 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="160dp">
     <ImageView
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@color/gray_regular"
@@ -19,7 +20,7 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="80dp"
+            android:layout_width="130dp"
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_dia"
@@ -34,7 +35,7 @@
 
         </RelativeLayout>
         <RelativeLayout
-            android:layout_width="110dp"
+            android:layout_width="160dp"
             android:layout_height="100dp">
             <LinearLayout
 
@@ -43,19 +44,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/tipo"
                     android:textSize="18sp"
                     android:textColor="@color/white"
                     android:text="ALMUERZO"
                     android:layout_width="match_parent"
                     android:layout_height="30dp" />
-                <TextView
-                    android:id="@+id/tv_alm_1"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Tallarin verde"
-                    android:layout_width="match_parent"
-                    android:layout_height="23dp" />
+
                 <TextView
                     android:id="@+id/tv_alm_2"
                     android:layout_marginLeft="5dp"
@@ -72,6 +67,14 @@
                     android:text="Manzana"
                     android:layout_width="match_parent"
                     android:layout_height="23dp" />
+                <TextView
+                    android:id="@+id/tv_alm_1"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:text="Tallarin verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="23dp" />
 
 
             </LinearLayout>
@@ -79,53 +82,11 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-
-            android:layout_width="100dp"
-            android:layout_height="100dp">
-            <LinearLayout
-
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:text="CENA"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp" />
-                <TextView
-                    android:id="@+id/tv_cen_1"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Arroz Chaufa"
-                    android:layout_width="match_parent"
-                    android:layout_height="23dp" />
-                <TextView
-                    android:id="@+id/tv_cen_2"
-
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Ensalada"
-                    android:layout_width="match_parent"
-                    android:layout_height="23dp" />
-                <TextView
-                    android:id="@+id/tv_cen_3"
-
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Refresco"
-                    android:layout_width="match_parent"
-                    android:layout_height="23dp" />
-
-            </LinearLayout>
 
 
-        </RelativeLayout>
+
+
+        
     </LinearLayout>
 
 

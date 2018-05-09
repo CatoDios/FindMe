@@ -16,6 +16,6 @@ public interface GetRequest {
     @GET("")
     Call<MenuEntity>getMenuHoy();
 
-    @GET("")
+    @GET("tick-app-client/comida/listar")
     Call<ArrayList<ComidaEntity>> getMenuSemana();
 }

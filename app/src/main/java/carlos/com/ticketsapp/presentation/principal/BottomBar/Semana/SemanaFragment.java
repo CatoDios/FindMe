@@ -2,6 +2,7 @@ package carlos.com.ticketsapp.presentation.principal.BottomBar.Semana;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
     @BindView(R.id.rv_list)
     RecyclerView rvList;
 
-
+    private LinearLayoutManager mLayoutManager;
 
     Unbinder unbinder;
     private SemanaContract.Presenter mPresenter;
@@ -36,6 +37,22 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
         return new PrincipalFragment();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter=new SemanaPresenter(this,getContext());
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mProgressDialogCustom = new ProgressDialogCustom(getContext(), "Obteniendo datos...");
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mAdapter = new SemanaAdapter(new ArrayList<ComidaEntity>(), getContext(),(ItemSemana) mPresenter);
+        rvList.setLayoutManager(mLayoutManager);
+        rvList.setAdapter(mAdapter);
+    }
 
     @Override
     public void onResume() {
