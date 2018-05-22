@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-   android:paddingTop="40dp"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout android:paddingTop="40dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
-
-
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="5dp"
+        android:elevation="5dp"
         android:layout_margin="30dp"
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="350dp">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@color/gray_regular"
+            android:src="@drawable/fondos"
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gradiente"
+            android:scaleType="centerCrop"
             />
 
         <LinearLayout
@@ -28,7 +36,7 @@
                 android:layout_height="50dp">
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="27sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LUNES"
@@ -46,28 +54,32 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
                         android:textColor="@color/white"
                         android:text="ALMUERZO"
                         android:layout_width="match_parent"
                         android:layout_height="30dp" />
                     <TextView
+
                         android:layout_marginLeft="15dp"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Tallarin verde"
                         android:layout_width="match_parent"
                         android:layout_height="23dp" />
                     <TextView
+
                         android:layout_marginLeft="15dp"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Sopa de carne"
                         android:layout_width="match_parent"
                         android:layout_height="23dp" />
                     <TextView
+
                         android:layout_marginLeft="15dp"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Manzana"
                         android:layout_width="match_parent"
@@ -90,28 +102,32 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
                         android:textColor="@color/white"
                         android:text="CENA"
                         android:layout_width="match_parent"
                         android:layout_height="30dp" />
                     <TextView
+
                         android:layout_marginLeft="15dp"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Arroz Chaufa"
                         android:layout_width="match_parent"
                         android:layout_height="23dp" />
                     <TextView
+
                         android:layout_marginLeft="15dp"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Ensalada"
                         android:layout_width="match_parent"
                         android:layout_height="23dp" />
                     <TextView
+
                         android:layout_marginLeft="15dp"
-                        android:textSize="15sp"
+                        android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Refresco"
                         android:layout_width="match_parent"
@@ -125,6 +141,6 @@
 
 
 
-    </FrameLayout>
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

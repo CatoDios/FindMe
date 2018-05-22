@@ -21,9 +21,8 @@
         <activity android:name=".presentation.auth.LoginActivity"></activity>
         <activity android:name=".presentation.principal.PrincipalActivity"></activity>
         <activity android:name=".presentation.auth.LoadActivity"></activity>
-        <activity android:name=".presentation.categorias.CategoriasActivity"></activity>
-        <activity android:name=".presentation.recomendados.RecomendadosActivity"></activity>
         <activity android:name=".presentation.profile.ProfileActivity"></activity>
+        <activity android:name=".presentation.principal.BottomBar.DetallesMenu.DetallesActivity"></activity>
 
 
 

@@ -3,10 +3,11 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="150dp"
     android:background="@drawable/fondo_header"
     android:orientation="vertical"
     >
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,6 +26,7 @@
                 android:layout_height="wrap_content">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_centerHorizontal="true"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/imgCliente"
@@ -35,16 +37,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
                     android:orientation="vertical">
 
                     <TextView
+                        android:layout_marginTop="100dp"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Android Studio"
                         android:id="@+id/tv_name"
-                        android:layout_marginStart="20dp"
+
                         android:textSize="14dp"
                         android:textStyle="bold"/>
 
@@ -53,7 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Ccopa Mamani"
-                        android:layout_marginStart="20dp"
+                        android:textAlignment="center"
                         android:id="@+id/tv_codigo"
                         android:textSize="11dp" />
 
@@ -66,11 +70,7 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            />
+
 
     </RelativeLayout>
 

@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,7 +58,20 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
         ((ViewHolder) holder).tvTipo.setText(comidaEntity.getComidaTipo());
         ((ViewHolder) holder).tvAlm2.setText(comidaEntity.getNombre());
         ((ViewHolder) holder).tvAlm3.setText(String.valueOf(comidaEntity.getNumRaciones()));
-        ((ViewHolder) holder).tvAlm1.setText(comidaEntity.getComidaTipo());
+        ((ViewHolder) holder).tvAlm1.setText(comidaEntity.getDescripcion());
+
+        if (position%4==0){
+            Picasso.get().load(R.drawable.semana1).into(((ViewHolder) holder).imgComida);
+        }else if (position%4==1){
+            Picasso.get().load(R.drawable.semana2).into(((ViewHolder) holder).imgComida);
+        }else if (position%4==2) {
+            Picasso.get().load(R.drawable.semana3).into(((ViewHolder) holder).imgComida);
+        }
+        else  {
+            Picasso.get().load(R.drawable.semana4).into(((ViewHolder) holder).imgComida);
+        }
+
+
 
     }
 
@@ -78,6 +94,9 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
         TextView tvAlm2;
         @BindView(R.id.tv_alm_3)
         TextView tvAlm3;
+
+        @BindView(R.id.img_comida)
+        ImageView imgComida;
 
 
 

@@ -15,6 +15,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        release{  }
     }
     flavorDimensions 'default'
     productFlavors {
@@ -79,5 +80,7 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     //Interceptor
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
