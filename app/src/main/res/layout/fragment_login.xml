@@ -59,6 +59,7 @@
             >
 
             <Button
+                android:backgroundTint=" #CA603B"
                 android:textColor="@color/white"
                 android:id="@+id/btn_iniciar_sesion"
                 android:layout_marginTop="30dp"

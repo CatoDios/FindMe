@@ -5,18 +5,29 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.models.MenuEntity;
+import carlos.com.ticketsapp.presentation.mapa.MapaActivity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 import carlos.com.ticketsapp.utils.ProgressDialogCustom;
 
 public class HoyFragment  extends BaseFragment implements HoyContract.View{
+
+    @BindView(R.id.reservar)
+    Button btnReservar;
+
+
     Unbinder unbinder;
+
+
     private ProgressDialogCustom mProgressDialogCustom;
 
     public static PrincipalFragment newInstance() {
@@ -79,16 +90,14 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
     }
 
 
-    /*@OnClick({R.id.btn_categorias,R.id.btn_marcas,R.id.btn_recomendados})
+    @OnClick({R.id.reservar})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
-            case R.id.btn_categorias:
-                nextActivity(getActivity(), null, CategoriasActivity.class, false);
+            case R.id.reservar:
+                nextActivity(getActivity(), null, MapaActivity.class, false);
                 break;
-            case R.id.btn_recomendados:
-                nextActivity(getActivity(), null, RecomendadosActivity.class, false);
-                break;
+
         }
-    }*/
+    }
 }
