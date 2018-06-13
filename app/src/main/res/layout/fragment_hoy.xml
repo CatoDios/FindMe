@@ -42,14 +42,47 @@
                     android:textSize="27sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LUNES"
+                    android:text="MARTES"
                     android:textColor="@color/white"
                     />
 
             </RelativeLayout>
             <RelativeLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="60dp">
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:text="DESAYUNO"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp" />
+                    <TextView
+
+                        android:id="@+id/desayuno"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="17sp"
+                        android:textColor="@color/white"
+                        android:text="Arroz Chaufa"
+                        android:layout_width="match_parent"
+                        android:layout_height="23dp" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
                 <LinearLayout
 
                     android:orientation="vertical"
@@ -64,29 +97,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp" />
                     <TextView
-
+                        android:id="@+id/almuerzo"
                         android:layout_marginLeft="15dp"
                         android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Tallarin verde"
                         android:layout_width="match_parent"
                         android:layout_height="23dp" />
-                    <TextView
 
-                        android:layout_marginLeft="15dp"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"
-                        android:text="Sopa de carne"
-                        android:layout_width="match_parent"
-                        android:layout_height="23dp" />
-                    <TextView
-
-                        android:layout_marginLeft="15dp"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"
-                        android:text="Manzana"
-                        android:layout_width="match_parent"
-                        android:layout_height="23dp" />
 
 
                 </LinearLayout>
@@ -97,7 +115,7 @@
             <RelativeLayout
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="60dp">
                 <LinearLayout
 
                     android:orientation="vertical"
@@ -112,29 +130,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp" />
                     <TextView
-
+                        android:id="@+id/cena"
                         android:layout_marginLeft="15dp"
                         android:textSize="17sp"
                         android:textColor="@color/white"
                         android:text="Arroz Chaufa"
                         android:layout_width="match_parent"
                         android:layout_height="23dp" />
-                    <TextView
 
-                        android:layout_marginLeft="15dp"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"
-                        android:text="Ensalada"
-                        android:layout_width="match_parent"
-                        android:layout_height="23dp" />
-                    <TextView
-
-                        android:layout_marginLeft="15dp"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"
-                        android:text="Refresco"
-                        android:layout_width="match_parent"
-                        android:layout_height="23dp" />
 
                 </LinearLayout>
 

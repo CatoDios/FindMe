@@ -50,21 +50,15 @@
             android:layout_width="160dp"
             android:layout_height="100dp">
             <LinearLayout
-
+                android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tipo"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:text="ALMUERZO"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp" />
+
 
                 <TextView
-                    android:id="@+id/tv_alm_2"
+                    android:id="@+id/tv_desayuno"
                     android:layout_marginLeft="5dp"
                     android:textSize="15sp"
                     android:textColor="@color/white"
@@ -72,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="23dp" />
                 <TextView
-                    android:id="@+id/tv_alm_3"
+                    android:id="@+id/tv_almuerzo"
                     android:layout_marginLeft="5dp"
                     android:textSize="15sp"
                     android:textColor="@color/white"
@@ -80,7 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="23dp" />
                 <TextView
-                    android:id="@+id/tv_alm_1"
+                    android:id="@+id/tv_cena"
                     android:layout_marginLeft="5dp"
                     android:textSize="15sp"
                     android:textColor="@color/white"

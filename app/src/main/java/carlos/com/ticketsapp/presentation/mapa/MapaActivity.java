@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,8 +39,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
+import carlos.com.ticketsapp.presentation.reservacion.ReservacionActivity;
 import carlos.com.ticketsapp.utils.ActivityUtils;
 
 public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
@@ -136,7 +139,15 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();*/
+        ButterKnife.bind(this);
         setContentView(R.layout.activity_maps);
+        Button reservar=(Button)findViewById(R.id.btn_reservar);
+        reservar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                next(MapaActivity.this,null,ReservacionActivity.class,false);
+            }
+        });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -234,6 +245,8 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
             }
         }
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode,

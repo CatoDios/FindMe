@@ -17,6 +17,8 @@ import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.models.ComidaEntity;
+import carlos.com.ticketsapp.data.models.SemanaResponse;
+import carlos.com.ticketsapp.data.models.Semana_card;
 import carlos.com.ticketsapp.presentation.principal.BottomBar.DetallesMenu.DetallesActivity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 import carlos.com.ticketsapp.utils.ProgressDialogCustom;
@@ -49,7 +51,7 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
         mProgressDialogCustom = new ProgressDialogCustom(getContext(), "Obteniendo datos...");
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mAdapter = new SemanaAdapter(new ArrayList<ComidaEntity>(), getContext(),(ItemSemana) mPresenter);
+        mAdapter = new SemanaAdapter(new ArrayList<Semana_card>(), getContext(),(ItemSemana) mPresenter);
         rvList.setLayoutManager(mLayoutManager);
         rvList.setAdapter(mAdapter);
     }
@@ -110,14 +112,65 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
     }
 
     @Override
-    public void getMenuSemana(ArrayList<ComidaEntity> body) {
-        mAdapter.setItems(body);
+    public void getMenuSemana(SemanaResponse body) {
+        ArrayList<Semana_card> semana= new ArrayList<>();
+        Semana_card lunes=new Semana_card();
+        lunes.setDia("LUNES");
+        lunes.setDesayuno(body.getLunes().get(0).getNombre());
+        lunes.setAlmuerzo(body.getLunes().get(1).getNombre());
+        lunes.setCena(body.getLunes().get(2).getNombre());
+
+        Semana_card martes=new Semana_card();
+        martes.setDia("MARTES");
+        martes.setDesayuno(body.getMartes().get(0).getNombre());
+        martes.setAlmuerzo(body.getMartes().get(1).getNombre());
+        martes.setCena(body.getMartes().get(2).getNombre());
+
+        Semana_card miercoles=new Semana_card();
+        miercoles.setDia("MIERCOLES");
+        miercoles.setDesayuno(body.getMiercoles().get(0).getNombre());
+        miercoles.setAlmuerzo(body.getMiercoles().get(1).getNombre());
+        miercoles.setCena(body.getMiercoles().get(2).getNombre());
+
+        Semana_card jueves=new Semana_card();
+        jueves.setDia("JUEVES");
+        jueves.setDesayuno(body.getJueves().get(0).getNombre());
+        jueves.setAlmuerzo(body.getJueves().get(1).getNombre());
+        jueves.setCena(body.getJueves().get(2).getNombre());
+
+        Semana_card viernes=new Semana_card();
+        viernes.setDia("VIERNES");
+        viernes.setDesayuno(body.getViernes().get(0).getNombre());
+        viernes.setAlmuerzo(body.getViernes().get(1).getNombre());
+        viernes.setCena(body.getViernes().get(2).getNombre());
+
+        Semana_card sabado=new Semana_card();
+        sabado.setDia("SABADO");
+        sabado.setDesayuno(body.getSabado().get(0).getNombre());
+        sabado.setAlmuerzo(body.getSabado().get(1).getNombre());
+        sabado.setCena(body.getSabado().get(2).getNombre());
+
+        Semana_card domingo=new Semana_card();
+        domingo.setDia("DOMINGO");
+        domingo.setDesayuno(body.getDomingo().get(0).getNombre());
+        domingo.setAlmuerzo(body.getDomingo().get(1).getNombre());
+        domingo.setCena(body.getDomingo().get(2).getNombre());
+
+        semana.add(lunes);
+        semana.add(martes);
+        semana.add(miercoles);
+        semana.add(jueves);
+        semana.add(viernes);
+        semana.add(sabado);
+        semana.add(domingo);
+
+        mAdapter.setItems(semana);
 
 
     }
 
     @Override
-    public void clickItemCategorias(ComidaEntity comidaEntity) {
+    public void clickItemCategorias(Semana_card comidaEntity) {
         nextActivity(getActivity(),null, DetallesActivity.class,false);
     }
 }

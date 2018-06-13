@@ -14,5 +14,5 @@
         barColorWhenSelected="#F44336"
         id="@+id/tab_historial"
         icon="@drawable/ic_all_inclusive_black_24dp"
-        title="Historial" />
+        title="Faltas" />
 </tabs>

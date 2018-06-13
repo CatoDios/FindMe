@@ -28,7 +28,9 @@
         <activity android:name=".presentation.profile.ProfileActivity"></activity>
         <activity android:name=".presentation.principal.BottomBar.DetallesMenu.DetallesActivity"></activity>
         <activity android:name=".presentation.mapa.MapaActivity"></activity>
-
+        <activity android:name=".presentation.reservacion.ReservacionActivity"></activity>
+        <activity android:name=".presentation.reservacion_nivel.NivelActivity"></activity>
+        <activity android:name=".presentation.reservar.ReservarActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

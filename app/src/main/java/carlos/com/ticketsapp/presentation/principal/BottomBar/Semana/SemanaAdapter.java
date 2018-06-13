@@ -16,24 +16,23 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.LoaderAdapter;
-import carlos.com.ticketsapp.data.models.Comida;
-import carlos.com.ticketsapp.data.models.ComidaEntity;
+import carlos.com.ticketsapp.data.models.Semana_card;
 import carlos.com.ticketsapp.utils.OnClickListListener;
 
-public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClickListListener{
+public class SemanaAdapter extends LoaderAdapter<Semana_card> implements OnClickListListener{
 
     private Context context;
     private ItemSemana itemSemana;
 
-    public SemanaAdapter(ArrayList<ComidaEntity> comidaEntities,Context context,ItemSemana itemSemana) {
+    public SemanaAdapter(ArrayList<Semana_card> comidaEntities, Context context, ItemSemana itemSemana) {
         super(context);
         setItems(comidaEntities);
         this.context=context;
         this.itemSemana = itemSemana;
     }
 
-    public ArrayList<ComidaEntity> getItems() {
-        return (ArrayList<ComidaEntity>) getmItems();
+    public ArrayList<Semana_card> getItems() {
+        return (ArrayList<Semana_card>) getmItems();
     }
 
 
@@ -51,14 +50,14 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
 
     @Override
     public void bindYourViewHolder(RecyclerView.ViewHolder holder, int position) {
-        final ComidaEntity comidaEntity=getItems().get(position);
+        final Semana_card semana_card=getItems().get(position);
 
-        ((ViewHolder) holder).tvDia.setText(comidaEntity.getDia());
+        ((ViewHolder) holder).tvDia.setText(semana_card.getDia());
 
-        ((ViewHolder) holder).tvTipo.setText(comidaEntity.getComidaTipo());
-        ((ViewHolder) holder).tvAlm2.setText(comidaEntity.getNombre());
-        ((ViewHolder) holder).tvAlm3.setText(String.valueOf(comidaEntity.getNumRaciones()));
-        ((ViewHolder) holder).tvAlm1.setText(comidaEntity.getDescripcion());
+
+        ((ViewHolder) holder).tv_desayuno.setText(semana_card.getDesayuno());
+        ((ViewHolder) holder).tv_almuerzo.setText(semana_card.getAlmuerzo());
+        ((ViewHolder) holder).tv_cena.setText(semana_card.getCena());
 
         if (position%4==0){
             Picasso.get().load(R.drawable.semana1).into(((ViewHolder) holder).imgComida);
@@ -77,23 +76,22 @@ public class SemanaAdapter extends LoaderAdapter<ComidaEntity> implements OnClic
 
     @Override
     public void onClick(int position) {
-        ComidaEntity comidaEntity=getItems().get(position);
-        itemSemana.clickItem(comidaEntity);
+        Semana_card semana_card=getItems().get(position);
+        itemSemana.clickItem(semana_card);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         @BindView(R.id.tv_dia)
         TextView tvDia;
-        @BindView(R.id.tipo)
-        TextView tvTipo;
 
-        @BindView(R.id.tv_alm_1)
-        TextView tvAlm1;
-        @BindView(R.id.tv_alm_2)
-        TextView tvAlm2;
-        @BindView(R.id.tv_alm_3)
-        TextView tvAlm3;
+
+        @BindView(R.id.tv_desayuno)
+        TextView tv_desayuno;
+        @BindView(R.id.tv_almuerzo)
+        TextView tv_almuerzo;
+        @BindView(R.id.tv_cena)
+        TextView tv_cena;
 
         @BindView(R.id.img_comida)
         ImageView imgComida;

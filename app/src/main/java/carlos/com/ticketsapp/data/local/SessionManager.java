@@ -23,6 +23,8 @@ public class SessionManager {
     public static final String USER_JSON = "user_json";
     public static final String IS_LOGIN = "user_login";
     public static final String USER_MAIL = "user_mail";
+    public static final String ID_COMIDA="id_comida";
+    public static final String ID_NIVELTURNO="id_nivelturno";
     public static final String EXPLANATION_SCHEDULE = "schedule_explanation";
 
 
@@ -96,6 +98,25 @@ public class SessionManager {
 
     public String getUserEmail() {
         return preferences.getString(USER_MAIL, "");
+    }
+
+
+    public void setIdComida(String idComida) {
+        editor.putString(ID_COMIDA, idComida);
+        editor.commit();
+    }
+
+    public String getIdComida() {
+        return preferences.getString(ID_COMIDA, "");
+    }
+
+    public void setIdNivelTurno(String nivelTurno) {
+        editor.putString(ID_NIVELTURNO, nivelTurno);
+        editor.commit();
+    }
+
+    public String getIdNivelturno() {
+        return preferences.getString(ID_NIVELTURNO, "");
     }
 
 }

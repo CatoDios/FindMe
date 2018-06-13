@@ -1,0 +1,57 @@
+package carlos.com.ticketsapp.presentation.reservacion_nivel;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+import carlos.com.ticketsapp.R;
+import carlos.com.ticketsapp.core.BaseFragment;
+import carlos.com.ticketsapp.data.local.SessionManager;
+import carlos.com.ticketsapp.presentation.reservacion.ReservacionFragment;
+import carlos.com.ticketsapp.presentation.reservar.ReservarActivity;
+
+/**
+ * Created by carlos on 12/06/2018.
+ */
+
+public class NivelFragment extends BaseFragment{
+    SessionManager mSessionManager;
+    Unbinder unbinder;
+    public static NivelFragment newInstance(){
+        return new NivelFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mSessionManager=new SessionManager(getContext());
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root=inflater.inflate(R.layout.fragment_nivel,container,false);
+        unbinder= ButterKnife.bind(this,root);
+        return  root;
+    }
+
+    @OnClick({R.id.nivel1,R.id.nivel2})
+    public void onclicked(View view){
+        String turno=mSessionManager.getIdNivelturno();
+        switch (view.getId()){
+            case R.id.nivel1:
+                    mSessionManager.setIdNivelTurno("1"+turno);
+                    nextActivity(getActivity(),null, ReservarActivity.class,false);
+                break;
+            case R.id.nivel2:
+                    mSessionManager.setIdNivelTurno("2"+turno);
+                    nextActivity(getActivity(),null, ReservarActivity.class,false);
+                break;
+        }
+    }
+}

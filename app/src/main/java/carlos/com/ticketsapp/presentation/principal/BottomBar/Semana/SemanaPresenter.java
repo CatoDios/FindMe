@@ -5,6 +5,8 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import carlos.com.ticketsapp.data.models.ComidaEntity;
+import carlos.com.ticketsapp.data.models.SemanaResponse;
+import carlos.com.ticketsapp.data.models.Semana_card;
 import carlos.com.ticketsapp.data.remote.ServiceFactory;
 import carlos.com.ticketsapp.data.remote.request.GetRequest;
 import retrofit2.Call;
@@ -32,10 +34,10 @@ public class SemanaPresenter implements SemanaContract.Presenter,ItemSemana {
     public void getMenu() {
         GetRequest postRequest =
                 ServiceFactory.createService(GetRequest.class);
-        Call<ArrayList<ComidaEntity>> call = postRequest.getMenuSemana();
-        call.enqueue(new Callback<ArrayList<ComidaEntity>>() {
+        Call<SemanaResponse> call = postRequest.getMenuSemana();
+        call.enqueue(new Callback<SemanaResponse>() {
             @Override
-            public void onResponse(Call<ArrayList<ComidaEntity>> call, Response<ArrayList<ComidaEntity>> response) {
+            public void onResponse(Call<SemanaResponse> call, Response<SemanaResponse> response) {
                 if (!mView.isActive()) {
                     return;
                 }
@@ -52,7 +54,7 @@ public class SemanaPresenter implements SemanaContract.Presenter,ItemSemana {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ComidaEntity>> call, Throwable t) {
+            public void onFailure(Call<SemanaResponse> call, Throwable t) {
                 if (!mView.isActive()) {
                     return;
                 }
@@ -63,12 +65,12 @@ public class SemanaPresenter implements SemanaContract.Presenter,ItemSemana {
     }
 
     @Override
-    public void clickItem(ComidaEntity comidaEntity) {
+    public void clickItem(Semana_card comidaEntity) {
         mView.clickItemCategorias(comidaEntity);
     }
 
     @Override
-    public void deleteItem(ComidaEntity comidaEntity, int position) {
+    public void deleteItem(Semana_card comidaEntity, int position) {
 
     }
 }

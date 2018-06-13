@@ -1,24 +1,16 @@
 package carlos.com.ticketsapp.data.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MenuEntity implements Serializable{
-    AlmuerzoEntity almuerzo;
-    CenaEntity cena;
+    ArrayList<ComidaEntity> hoy;
 
-    public AlmuerzoEntity getAlmuerzo() {
-        return almuerzo;
+    public ArrayList<ComidaEntity> getHoy() {
+        return hoy;
     }
 
-    public void setAlmuerzo(AlmuerzoEntity almuerzo) {
-        this.almuerzo = almuerzo;
-    }
-
-    public CenaEntity getCena() {
-        return cena;
-    }
-
-    public void setCena(CenaEntity cena) {
-        this.cena = cena;
+    public void setHoy(ArrayList<ComidaEntity> hoy) {
+        this.hoy = hoy;
     }
 }
