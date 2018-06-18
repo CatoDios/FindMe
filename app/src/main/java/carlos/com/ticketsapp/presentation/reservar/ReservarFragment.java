@@ -60,6 +60,8 @@ public class ReservarFragment extends BaseFragment {
         comida.setText(mSessionManager.getIdComida());
         turno.setText(mSessionManager.getIdNivelturno());
 
+        mSessionManager.setIdNivelTurno("");
+
 
     }
 }

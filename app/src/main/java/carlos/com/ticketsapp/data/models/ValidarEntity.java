@@ -7,13 +7,22 @@ import java.io.Serializable;
  */
 
 public class ValidarEntity implements Serializable {
-    int code;
+    int estado;
+    String mensaje;
 
-    public int getCode() {
-        return code;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 }

@@ -31,6 +31,8 @@
         <activity android:name=".presentation.reservacion.ReservacionActivity"></activity>
         <activity android:name=".presentation.reservacion_nivel.NivelActivity"></activity>
         <activity android:name=".presentation.reservar.ReservarActivity"></activity>
+        <activity android:name=".presentation.tipo.TipoActivity"></activity>
+
 
         <meta-data
             android:name="com.google.android.gms.version"

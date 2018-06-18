@@ -100,7 +100,7 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
                 mCurrLocationMarker = mMap.addMarker(markerOptions);
 
                 //move map camera
-                //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
             }
         }
 
@@ -175,7 +175,8 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(20); // two minute interval
+
+        mLocationRequest.setInterval(20000); // two minute interval
 
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
@@ -194,6 +195,7 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
         else {
             mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
             mMap.setMyLocationEnabled(true);
+
         }
         View locationButton = ((View) findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
         RelativeLayout.LayoutParams rlp = (RelativeLayout.LayoutParams) locationButton.getLayoutParams();

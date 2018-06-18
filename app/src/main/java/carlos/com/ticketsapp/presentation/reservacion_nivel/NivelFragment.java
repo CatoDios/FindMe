@@ -89,8 +89,14 @@ public class NivelFragment extends BaseFragment implements NivelContract.View{
 
     @Override
     public void validarCantidad(ValidarEntity body) {
-        Toast.makeText(getContext(), String.valueOf(body.getCode()), Toast.LENGTH_SHORT).show();
-        nextActivity(getActivity(),null, ReservarActivity.class,false);
+
+        if (body.getEstado()==0){
+            Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
+
+        }else{
+            nextActivity(getActivity(),null, ReservarActivity.class,false);
+
+        }
 
     }
 }

@@ -25,9 +25,12 @@ import carlos.com.ticketsapp.data.models.MenuEntity;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.presentation.mapa.MapaActivity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
+import carlos.com.ticketsapp.presentation.tipo.TipoActivity;
 import carlos.com.ticketsapp.utils.ProgressDialogCustom;
 
 public class HoyFragment  extends BaseFragment implements HoyContract.View{
+
+    Bundle bundle;
 
     @BindView(R.id.reservar)
     Button btnReservar;
@@ -54,6 +57,7 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
         super.onCreate(savedInstanceState);
         mPresenter=new HoyPresenter(this,getContext());
         mSessionManager=new SessionManager(getContext());
+        bundle=new Bundle();
     }
 
     @Override
@@ -88,19 +92,23 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
             ComidaEntity almuerzo=body.get(1);
             ComidaEntity cena = body.get(2);
 
+            bundle.putString("desayuno",String.valueOf(desayuno.getIdComida()));
+            bundle.putString("almuerzo",String.valueOf(almuerzo.getIdComida()));
+            bundle.putString("cena",String.valueOf(cena.getIdComida()));
+
             tv_desayuno.setText(desayuno.getNombre());
             tv_almuerzo.setText(almuerzo.getNombre());
             tv_cena.setText(cena.getNombre());
 
-            mSessionManager.setIdComida(String.valueOf(cena.getIdComida()));
+
 
     }
 
     @Override
     public void validarUser(ValidarEntity body) {
-        Toast.makeText(getContext(), String.valueOf(body.getCode()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), String.valueOf(body.getEstado()), Toast.LENGTH_SHORT).show();
 
-        nextActivity(getActivity(), null, MapaActivity.class, false);
+        //nextActivity(getActivity(), null, MapaActivity.class, false);
     }
 
     @Override
@@ -140,8 +148,8 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
         switch (view.getId()) {
 
             case R.id.reservar:
+                nextActivity(getActivity(),bundle, TipoActivity.class,false);
 
-                mPresenter.validarUser();
                 break;
 
         }
