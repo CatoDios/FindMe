@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.Comida;
 import carlos.com.ticketsapp.data.models.ComidaEntity;
 import carlos.com.ticketsapp.data.models.MenuEntity;
+import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.presentation.mapa.MapaActivity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 import carlos.com.ticketsapp.utils.ProgressDialogCustom;
@@ -95,6 +97,13 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
     }
 
     @Override
+    public void validarUser(ValidarEntity body) {
+        Toast.makeText(getContext(), String.valueOf(body.getCode()), Toast.LENGTH_SHORT).show();
+
+        nextActivity(getActivity(), null, MapaActivity.class, false);
+    }
+
+    @Override
     public void setPresenter(HoyContract.Presenter presenter) {
 
     }
@@ -131,7 +140,8 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
         switch (view.getId()) {
 
             case R.id.reservar:
-                nextActivity(getActivity(), null, MapaActivity.class, false);
+
+                mPresenter.validarUser();
                 break;
 
         }
