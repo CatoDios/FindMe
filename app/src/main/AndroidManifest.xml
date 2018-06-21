@@ -32,6 +32,8 @@
         <activity android:name=".presentation.reservacion_nivel.NivelActivity"></activity>
         <activity android:name=".presentation.reservar.ReservarActivity"></activity>
         <activity android:name=".presentation.tipo.TipoActivity"></activity>
+        <activity android:name=".presentation.estado.EstadoActivity"></activity>
+
 
 
         <meta-data

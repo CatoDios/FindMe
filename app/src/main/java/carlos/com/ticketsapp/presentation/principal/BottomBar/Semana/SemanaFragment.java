@@ -171,6 +171,6 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
 
     @Override
     public void clickItemCategorias(Semana_card comidaEntity) {
-        nextActivity(getActivity(),null, DetallesActivity.class,false);
+        //nextActivity(getActivity(),null, DetallesActivity.class,false);
     }
 }

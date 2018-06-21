@@ -32,6 +32,8 @@ import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.UserEntity;
 import carlos.com.ticketsapp.presentation.auth.LoginActivity;
+import carlos.com.ticketsapp.presentation.estado.EstadoActivity;
+import carlos.com.ticketsapp.presentation.estado.EstadoFragment;
 import carlos.com.ticketsapp.presentation.principal.BottomBar.Historial.HistorialFragment;
 import carlos.com.ticketsapp.presentation.principal.BottomBar.Hoy.HoyFragment;
 import carlos.com.ticketsapp.presentation.principal.BottomBar.Semana.SemanaFragment;
@@ -166,6 +168,10 @@ public class PrincipalActivity extends BaseActivity {
 
                             case R.id.ac_cerrar_sesion:
                                 CloseSession();
+                                break;
+
+                            case R.id.ac_Pedido:
+                                nextActivity(PrincipalActivity.this,null, EstadoActivity.class,false);
                                 break;
 
                             /*

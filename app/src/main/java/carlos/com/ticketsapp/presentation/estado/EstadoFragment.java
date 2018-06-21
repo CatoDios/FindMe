@@ -1,4 +1,4 @@
-package carlos.com.ticketsapp.presentation.reservar;
+package carlos.com.ticketsapp.presentation.estado;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,17 +15,11 @@ import butterknife.Unbinder;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.local.SessionManager;
-import carlos.com.ticketsapp.data.models.RespuestaNT;
-import carlos.com.ticketsapp.data.models.RetornoEntity;
+import carlos.com.ticketsapp.data.models.EstadoEntity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
-import carlos.com.ticketsapp.presentation.reservacion_nivel.NivelFragment;
 
-/**
- * Created by carlos on 12/06/2018.
- */
-
-public class ReservarFragment extends BaseFragment implements ReservarContract.View{
-    @BindView(R.id.confirmar)
+public class EstadoFragment extends BaseFragment implements EstadoContract.View{
+    @BindView(R.id.cancelar)
     Button confirmar;
     @BindView(R.id.nombre)
     TextView nombre;
@@ -41,50 +35,38 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     @BindView(R.id.hora_fin)
     TextView hora_fin;
     Unbinder unbinder;
+    EstadoContract.Presenter mPresenter;
     SessionManager mSessionManager;
-    ReservarContract.Presenter mPresenter;
 
-    public static ReservarFragment newInstance(){
-        return new ReservarFragment();
-    }
 
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.traerEstado();
+    }
 
-        mPresenter.finalizar();
+    public static EstadoFragment newInstance(){
+        return new EstadoFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter=new EstadoPresenter(this,getContext());
         mSessionManager=new SessionManager(getContext());
-        mPresenter=new ReservarPresenter(getContext(),this);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root=inflater.inflate(R.layout.fragment_reservar,container,false);
+        View root=inflater.inflate(R.layout.fragment_estado,container,false);
         unbinder= ButterKnife.bind(this,root);
-        return  root;
+        return root;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void setPresenter(EstadoContract.Presenter presenter) {
 
-        /*nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat());
-        comida.setText(mSessionManager.getIdComida());
-        turno.setText(mSessionManager.getIdNivelturno());*/
-
-
-
-    }
-
-    @Override
-    public void setPresenter(ReservarContract.Presenter presenter) {
-            this.mPresenter=presenter;
     }
 
     @Override
@@ -108,7 +90,7 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     }
 
     @Override
-    public void reservado(RetornoEntity body) {
+    public void verEstado(EstadoEntity body) {
         nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat()+" "+mSessionManager.getUserEntity().getApeMat());
         comida.setText(body.getNombre());
         nivel.setText(String.valueOf(body.getNivel()));
@@ -118,16 +100,8 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
 
 
         mSessionManager.setIdNivelTurno("");
-
-
     }
-
-    @Override
-    public void ponerNT(RespuestaNT body) {
-        mSessionManager.setIdNivelTurno(String.valueOf(body.getEstado()));
-    }
-
-    @OnClick(R.id.confirmar)
+    @OnClick(R.id.cancelar)
     public void onclick(View view){
         nextActivityNewTask(getActivity(),null, PrincipalActivity.class,true);
     }

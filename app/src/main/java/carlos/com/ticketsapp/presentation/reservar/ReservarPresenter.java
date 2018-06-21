@@ -1,55 +1,58 @@
-package carlos.com.ticketsapp.presentation.reservacion_nivel;
+package carlos.com.ticketsapp.presentation.reservar;
 
 import android.content.Context;
 
-import java.util.ArrayList;
-
 import carlos.com.ticketsapp.data.local.SessionManager;
-import carlos.com.ticketsapp.data.models.ComidaEntity;
 import carlos.com.ticketsapp.data.models.RespuestaNT;
+import carlos.com.ticketsapp.data.models.RetornoEntity;
+import carlos.com.ticketsapp.data.models.TicketEnvio;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.data.remote.ServiceFactory;
 import carlos.com.ticketsapp.data.remote.request.GetRequest;
+import carlos.com.ticketsapp.presentation.reservacion_nivel.NivelContract;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by carlos on 16/06/2018.
- */
+public class ReservarPresenter implements ReservarContract.Presenter {
 
-public class NivelPresenter implements NivelContract.Presenter {
     SessionManager mSessionManager;
-
     Context context;
-    NivelContract.View mView;
+    ReservarContract.View mView;
 
-    public NivelPresenter(Context context, NivelContract.View mView) {
+    public ReservarPresenter(Context context, ReservarContract.View mView) {
         this.context = context;
         this.mView = mView;
-        this.mSessionManager = new SessionManager(this.context);
+        mSessionManager=new SessionManager(this.context);
     }
 
     @Override
+
     public void start() {
 
     }
 
-
-
-    public void validarCantidad(){
+    @Override
+    public void finalizar() {
         GetRequest postRequest =
                 ServiceFactory.createService(GetRequest.class);
-        Call<ValidarEntity> call = postRequest.validarCantidad(mSessionManager.getIdComida(),mSessionManager.getIdNivelturno());
-        call.enqueue(new Callback<ValidarEntity>() {
+        TicketEnvio ticketEnvio=new TicketEnvio();
+        ticketEnvio.setIdTicket(0);
+        ticketEnvio.setNumero(0);
+        ticketEnvio.setEstado("RESERVADO");
+        ticketEnvio.setIdComida(Integer.valueOf(mSessionManager.getIdComida()));
+        ticketEnvio.setIdNt(Integer.valueOf(mSessionManager.getIdNivelturno()));
+        ticketEnvio.setIdUsuario(mSessionManager.getUserEntity().idUsuario);
+        Call<RetornoEntity> call = postRequest.reservarTicket(ticketEnvio);
+        call.enqueue(new Callback<RetornoEntity>() {
             @Override
-            public void onResponse(Call<ValidarEntity> call, Response<ValidarEntity> response) {
+            public void onResponse(Call<RetornoEntity> call, Response<RetornoEntity> response) {
                 if (!mView.isActive()) {
                     return;
                 }
 
                 if (response.isSuccessful()) {
-                    mView.validarCantidad(response.body());
+                    mView.reservado(response.body());
                     // mView.showMessage("noticias obtenidas");
                     //openSession(token, response.body());
 
@@ -60,7 +63,7 @@ public class NivelPresenter implements NivelContract.Presenter {
             }
 
             @Override
-            public void onFailure(Call<ValidarEntity> call, Throwable t) {
+            public void onFailure(Call<RetornoEntity> call, Throwable t) {
                 if (!mView.isActive()) {
                     return;
                 }

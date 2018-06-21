@@ -227,15 +227,15 @@
 
 
     <Button
-        android:id="@+id/confirmar"
+        android:id="@+id/cancelar"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_height="60dp"
         android:background="@drawable/boton_login"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:text="CONFIRMAR"
+        android:backgroundTint="@color/error_red"
+        android:text="CANCELAR"
         android:textColor="@color/white"
         />
 

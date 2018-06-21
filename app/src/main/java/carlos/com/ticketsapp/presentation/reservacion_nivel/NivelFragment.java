@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -14,6 +16,7 @@ import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.local.SessionManager;
+import carlos.com.ticketsapp.data.models.RespuestaNT;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.presentation.reservacion.ReservacionFragment;
 import carlos.com.ticketsapp.presentation.reservar.ReservarActivity;
@@ -23,11 +26,19 @@ import carlos.com.ticketsapp.presentation.reservar.ReservarActivity;
  */
 
 public class NivelFragment extends BaseFragment implements NivelContract.View{
+    @BindView(R.id.nivel2)
+    RelativeLayout nivel2;
     SessionManager mSessionManager;
     Unbinder unbinder;
     NivelContract.Presenter mPresenter;
     public static NivelFragment newInstance(){
         return new NivelFragment();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -42,6 +53,9 @@ public class NivelFragment extends BaseFragment implements NivelContract.View{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(R.layout.fragment_nivel,container,false);
         unbinder= ButterKnife.bind(this,root);
+        if(mSessionManager.getTipo().equals("cena")){
+            nivel2.setVisibility(View.GONE);
+        }
         return  root;
     }
 
@@ -50,12 +64,14 @@ public class NivelFragment extends BaseFragment implements NivelContract.View{
         String turno=mSessionManager.getIdNivelturno();
         switch (view.getId()){
             case R.id.nivel1:
-                    mSessionManager.setIdNivelTurno("1"+turno);
+                    mSessionManager.setNivel("1");
+                    mPresenter.getNT();
                     mPresenter.validarCantidad();
 
                 break;
             case R.id.nivel2:
-                    mSessionManager.setIdNivelTurno("2"+turno);
+                    mSessionManager.setIdNivelTurno("2");
+                mPresenter.getNT();
                      mPresenter.validarCantidad();
 
                 break;
@@ -99,4 +115,11 @@ public class NivelFragment extends BaseFragment implements NivelContract.View{
         }
 
     }
+
+    @Override
+    public void ponerNT(RespuestaNT body) {
+        mSessionManager.setIdNivelTurno(String.valueOf(body.getEstado()));
+    }
+
+
 }

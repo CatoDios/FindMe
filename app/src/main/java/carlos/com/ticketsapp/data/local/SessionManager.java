@@ -24,7 +24,11 @@ public class SessionManager {
     public static final String IS_LOGIN = "user_login";
     public static final String USER_MAIL = "user_mail";
     public static final String ID_COMIDA="id_comida";
+    public static final String TURNO="turno";
+    public static final String NIVEL="nivel";
+
     public static final String ID_NIVELTURNO="id_nivelturno";
+    public static final String TIPO="tipo";
     public static final String EXPLANATION_SCHEDULE = "schedule_explanation";
 
 
@@ -117,6 +121,34 @@ public class SessionManager {
 
     public String getIdNivelturno() {
         return preferences.getString(ID_NIVELTURNO, "");
+    }
+
+    public void setTipo(String tipo) {
+        editor.putString(TIPO, tipo);
+        editor.commit();
+    }
+
+    public String getTipo() {
+        return preferences.getString(TIPO, "");
+    }
+
+    public void setTurno(String turno) {
+        editor.putString(TURNO, turno);
+        editor.commit();
+    }
+
+    public String getTurno() {
+        return preferences.getString(TURNO, "");
+    }
+
+
+    public void setNivel(String nivel) {
+        editor.putString(NIVEL, nivel);
+        editor.commit();
+    }
+
+    public String getNivel() {
+        return preferences.getString(NIVEL, "");
     }
 
 }

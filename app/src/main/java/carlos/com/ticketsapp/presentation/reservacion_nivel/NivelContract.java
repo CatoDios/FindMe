@@ -2,6 +2,7 @@ package carlos.com.ticketsapp.presentation.reservacion_nivel;
 
 import carlos.com.ticketsapp.core.BasePresenter;
 import carlos.com.ticketsapp.core.BaseView;
+import carlos.com.ticketsapp.data.models.RespuestaNT;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
 
 /**
@@ -14,9 +15,13 @@ public class NivelContract {
         boolean isActive();
 
         void validarCantidad(ValidarEntity body);
+
+        void ponerNT(RespuestaNT body);
     }
     interface Presenter extends BasePresenter{
 
         void validarCantidad();
+
+        void getNT();
     }
 }

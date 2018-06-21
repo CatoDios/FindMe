@@ -2,6 +2,7 @@ package carlos.com.ticketsapp.presentation.tipo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.presentation.mapa.MapaActivity;
 
 public class TipoFragment extends BaseFragment  implements TipoContract.View{
+@BindView(R.id.desayuno)
+    CardView desayuno_card;
 
     Unbinder unbinder;
 TipoContract.Presenter mPresenter;
@@ -54,25 +57,22 @@ TipoContract.Presenter mPresenter;
         super.onViewCreated(view, savedInstanceState);
 
     }
-    @OnClick({R.id.desayuno,R.id.almuerzo,R.id.cena})
+    @OnClick({R.id.almuerzo,R.id.cena})
     public void onclicked(View view){
 
         switch (view.getId()){
-            case R.id.desayuno:
 
-
-                mSessionManager.setIdComida(desayuno);
-                mPresenter.validar();
-
-                break;
             case R.id.almuerzo:
 
                 mSessionManager.setIdComida(almuerzo);
+                mSessionManager.setTipo("almuerzo");
+
                 mPresenter.validar();
                 break;
             case R.id.cena:
 
                 mSessionManager.setIdComida(cena);
+                mSessionManager.setTipo("cena");
                 mPresenter.validar();
                 break;
         }
@@ -106,7 +106,7 @@ TipoContract.Presenter mPresenter;
     @Override
     public void validarUser(ValidarEntity body) {
             if(body.getEstado()==0){
-                Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
                 nextActivity(getActivity(),null,MapaActivity.class,false);
 
             }else{

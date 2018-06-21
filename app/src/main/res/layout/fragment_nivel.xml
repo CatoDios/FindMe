@@ -19,7 +19,7 @@
             android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TURNO 1"/>
+            android:text="NIVEL 1"/>
 
     </RelativeLayout>
     <RelativeLayout
@@ -35,7 +35,7 @@
             android:layout_margin="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TURNO 2"/>
+            android:text="NIVEL 2"/>
 
     </RelativeLayout>
 
