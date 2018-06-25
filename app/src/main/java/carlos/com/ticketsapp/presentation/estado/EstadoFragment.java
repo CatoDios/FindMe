@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,12 +16,13 @@ import butterknife.Unbinder;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.local.SessionManager;
+import carlos.com.ticketsapp.data.models.CancelarResponse;
 import carlos.com.ticketsapp.data.models.EstadoEntity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
 
 public class EstadoFragment extends BaseFragment implements EstadoContract.View{
     @BindView(R.id.cancelar)
-    Button confirmar;
+    Button cancelar;
     @BindView(R.id.nombre)
     TextView nombre;
     @BindView(R.id.comida)
@@ -37,7 +39,7 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
     Unbinder unbinder;
     EstadoContract.Presenter mPresenter;
     SessionManager mSessionManager;
-
+    String idTicket;
 
     @Override
     public void onResume() {
@@ -91,18 +93,26 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
 
     @Override
     public void verEstado(EstadoEntity body) {
+
         nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat()+" "+mSessionManager.getUserEntity().getApeMat());
         comida.setText(body.getNombre());
         nivel.setText(String.valueOf(body.getNivel()));
         turno.setText(String.valueOf(body.getTurno()));
         hora_fin.setText(body.getHoraFin());
         hora_inicio.setText(body.getHoraInicio());
-
+        idTicket=body.getIdTicket();
 
         mSessionManager.setIdNivelTurno("");
     }
+
+    @Override
+    public void cancelarTicket(CancelarResponse body) {
+        Toast.makeText(getContext(), "cancelado", Toast.LENGTH_SHORT).show();
+        newActivityClearPreview(getActivity(),null,PrincipalActivity.class);
+    }
+
     @OnClick(R.id.cancelar)
     public void onclick(View view){
-        nextActivityNewTask(getActivity(),null, PrincipalActivity.class,true);
+        mPresenter.cancelarTicket(idTicket);
     }
 }

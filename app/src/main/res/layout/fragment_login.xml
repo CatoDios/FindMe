@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:background="#ffff"
+    android:background="#0067b0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <ImageView
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:src="@drawable/backreal"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,39 +20,60 @@
 
         >
         <ImageView
+            android:tint="@color/white"
             android:layout_gravity="center"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/login"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logooo"
             />
 
         <LinearLayout
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-
-                android:id="@+id/et_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:hint="Correo Electronico"
-                android:inputType="textEmailAddress"
-                android:imeOptions="actionNext"
-                />
-        </LinearLayout>
-
-        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@drawable/borde_circular"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
+                android:backgroundTint="#0067b0"
+                android:textColorHint="@color/white"
+
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
+                android:id="@+id/et_email"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+
+                android:hint="Usuario"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
+                />
+            <TextView
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="+@unmsm.edu.pe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/borde_circular"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+
+                android:backgroundTint="#0067b0"
+                android:textColorHint="@color/white"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+
                 android:hint="Contraseña"
                 android:inputType="textPassword"
                 />
@@ -59,8 +86,8 @@
             >
 
             <Button
-                android:backgroundTint=" #CA603B"
-                android:textColor="@color/white"
+                android:backgroundTint="@color/white"
+                android:textColor="#0067b0"
                 android:id="@+id/btn_iniciar_sesion"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/boton_login"
@@ -69,11 +96,11 @@
                 android:text="INCIAR SESION"/>
 
 
-            <TextView
+           <!-- <TextView
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Olvidé mi contraseña"/>
+                android:text="Olvidé mi contraseña"/>-->
 
 
         </LinearLayout>

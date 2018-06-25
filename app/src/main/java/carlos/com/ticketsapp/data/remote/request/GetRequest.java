@@ -2,6 +2,8 @@ package carlos.com.ticketsapp.data.remote.request;
 
 import java.util.ArrayList;
 
+import carlos.com.ticketsapp.data.models.CancelarRequest;
+import carlos.com.ticketsapp.data.models.CancelarResponse;
 import carlos.com.ticketsapp.data.models.ComidaEntity;
 import carlos.com.ticketsapp.data.models.EstadoEntity;
 import carlos.com.ticketsapp.data.models.FaltaEntity;
@@ -16,6 +18,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface GetRequest {
@@ -36,7 +39,8 @@ public interface GetRequest {
     Call<ValidarEntity> validarCantidad(@Path("id_comida") String id_comida, @Path("id_nivelTurno") String nivelTurno);
     @GET(" tick-app-jdbc-client/ticket/nivelturno/comida/listar/{id_usuario}")
     Call<EstadoEntity> verEstado(@Path("id_usuario") int id_usuario);
-
+    @PUT("tick-app-jdbc-client/ticket/cancelar}")
+    Call<CancelarResponse> cancelarTicket(@Body CancelarRequest cancelarRequest);
     @GET(" tick-app-jdbc-client/nivelturno/listar/{id_comida}/{nivel}/{turno}")
     Call<RespuestaNT> getNT(@Path("id_comida") String id_comida, @Path("nivel") String nivel, @Path("turno") String turno);
     @POST(" https://tick-app-zuul.herokuapp.com/tick-app-jdbc-client/ticket/add")

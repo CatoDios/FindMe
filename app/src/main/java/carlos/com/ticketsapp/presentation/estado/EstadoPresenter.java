@@ -3,6 +3,8 @@ package carlos.com.ticketsapp.presentation.estado;
 import android.content.Context;
 
 import carlos.com.ticketsapp.data.local.SessionManager;
+import carlos.com.ticketsapp.data.models.CancelarRequest;
+import carlos.com.ticketsapp.data.models.CancelarResponse;
 import carlos.com.ticketsapp.data.models.EstadoEntity;
 import carlos.com.ticketsapp.data.models.RetornoEntity;
 import carlos.com.ticketsapp.data.models.TicketEnvio;
@@ -55,6 +57,49 @@ public class EstadoPresenter implements EstadoContract.Presenter {
 
             @Override
             public void onFailure(Call<EstadoEntity> call, Throwable t) {
+                if (!mView.isActive()) {
+                    return;
+                }
+                mView.setLoadingIndicator(false);
+                mView.showErrorMessage("Fallo al traer datos, comunicarse con su administrador");
+            }
+        });
+    }
+
+    @Override
+    public void cancelarTicket(String idTicket) {
+        GetRequest postRequest =
+                ServiceFactory.createService(GetRequest.class);
+         CancelarRequest cancelarRequest=new CancelarRequest();
+         cancelarRequest.setIdTicket(Integer.valueOf(idTicket));
+         cancelarRequest.setNumero(9);
+         cancelarRequest.setEstado("RESERVADO");
+         cancelarRequest.setIdComida(90);
+         cancelarRequest.setIdNt(357);
+         cancelarRequest.setIdUsuario(1);
+
+
+        Call<CancelarResponse> call = postRequest.cancelarTicket(cancelarRequest);
+        call.enqueue(new Callback<CancelarResponse>() {
+            @Override
+            public void onResponse(Call<CancelarResponse> call, Response<CancelarResponse> response) {
+                if (!mView.isActive()) {
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+                    mView.cancelarTicket(response.body());
+                    // mView.showMessage("noticias obtenidas");
+                    //openSession(token, response.body());
+
+                } else {
+                    mView.setLoadingIndicator(false);
+                    mView.showErrorMessage("Ocurrió un error al obtener las noticias");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CancelarResponse> call, Throwable t) {
                 if (!mView.isActive()) {
                     return;
                 }
