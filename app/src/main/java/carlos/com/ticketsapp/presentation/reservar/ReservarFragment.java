@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -27,6 +29,8 @@ import carlos.com.ticketsapp.presentation.reservacion_nivel.NivelFragment;
 public class ReservarFragment extends BaseFragment implements ReservarContract.View{
     @BindView(R.id.confirmar)
     Button confirmar;
+    @BindView(R.id.cola)
+    TextView cola;
     @BindView(R.id.nombre)
     TextView nombre;
     @BindView(R.id.comida)
@@ -35,6 +39,8 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     TextView turno;
     @BindView(R.id.nivel)
     TextView nivel;
+    @BindView(R.id.cuerpo)
+    RelativeLayout cuerpo;
 
     @BindView(R.id.hora_inicio)
     TextView hora_inicio;
@@ -43,7 +49,7 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     Unbinder unbinder;
     SessionManager mSessionManager;
     ReservarContract.Presenter mPresenter;
-
+    ProgressBar progressBar;
     public static ReservarFragment newInstance(){
         return new ReservarFragment();
     }
@@ -51,8 +57,12 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     @Override
     public void onResume() {
         super.onResume();
-
-        mPresenter.finalizar();
+        if(mSessionManager.getEstadoCola()==0){
+            mPresenter.finalizarCola();
+        }
+        else{
+            mPresenter.finalizar();
+        }
     }
 
     @Override
@@ -73,7 +83,13 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        progressBar = new ProgressBar(getContext(),null,android.R.attr.progressBarStyleLarge);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        RelativeLayout layout = getActivity().findViewById(R.id.root);
+        layout.addView(progressBar,params);
+        progressBar.setVisibility(View.VISIBLE);  //To show ProgressBar
+        cuerpo.setVisibility(View.GONE);
         /*nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat());
         comida.setText(mSessionManager.getIdComida());
         turno.setText(mSessionManager.getIdNivelturno());*/
@@ -109,6 +125,8 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
 
     @Override
     public void reservado(RetornoEntity body) {
+        progressBar.setVisibility(View.GONE);
+        cuerpo.setVisibility(View.VISIBLE);
         nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat()+" "+mSessionManager.getUserEntity().getApeMat());
         comida.setText(body.getNombre());
         nivel.setText(String.valueOf(body.getNivel()));
@@ -125,6 +143,23 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
     @Override
     public void ponerNT(RespuestaNT body) {
         mSessionManager.setIdNivelTurno(String.valueOf(body.getEstado()));
+    }
+
+    @Override
+    public void reservadoCola(RetornoEntity body) {
+        cola.setText("(En la cola "+body.getEstado()+")");
+        progressBar.setVisibility(View.GONE);
+        cuerpo.setVisibility(View.VISIBLE);
+        nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat()+" "+mSessionManager.getUserEntity().getApeMat());
+        comida.setText(body.getNombre());
+        nivel.setText(String.valueOf(body.getNivel()));
+        turno.setText(String.valueOf(body.getTurno()));
+        hora_fin.setText(body.getHoraFin());
+        hora_inicio.setText(body.getHoraInicio());
+
+
+        mSessionManager.setIdNivelTurno("");
+
     }
 
     @OnClick(R.id.confirmar)

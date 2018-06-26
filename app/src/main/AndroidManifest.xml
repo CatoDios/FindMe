@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -41,6 +43,12 @@
         <activity android:name=".presentation.ayuda.ayuda4"></activity>
         <activity android:name=".presentation.ayuda.ayuda5"></activity>
         <activity android:name=".presentation.ayuda.ayuda6"></activity>
+        <activity android:name=".presentation.escanear.RespuestaActivity"></activity>
+        <activity android:name=".presentation.escanear.RespuestaMalActivity"></activity>
+        <activity android:name=".presentation.semanal.semanaActivity"></activity>
+
+
+
 
 
 

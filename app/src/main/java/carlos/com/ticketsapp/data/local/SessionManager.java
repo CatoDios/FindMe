@@ -26,6 +26,7 @@ public class SessionManager {
     public static final String ID_COMIDA="id_comida";
     public static final String TURNO="turno";
     public static final String NIVEL="nivel";
+    public static final String ESTADO_COLA="estado_cola";
 
     public static final String ID_NIVELTURNO="id_nivelturno";
     public static final String TIPO="tipo";
@@ -149,6 +150,15 @@ public class SessionManager {
 
     public String getNivel() {
         return preferences.getString(NIVEL, "");
+    }
+
+    public void setEstadocola(int nivel) {
+        editor.putInt(ESTADO_COLA, nivel);
+        editor.commit();
+    }
+
+    public int getEstadoCola() {
+        return preferences.getInt(ESTADO_COLA, 0);
     }
 
 }

@@ -20,5 +20,7 @@ public class EstadoContract {
         void verEstado(EstadoEntity body);
 
         void cancelarTicket(CancelarResponse body);
+
+        void error();
     }
 }

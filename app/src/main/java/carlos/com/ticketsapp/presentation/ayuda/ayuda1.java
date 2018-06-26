@@ -14,12 +14,15 @@ import butterknife.OnClick;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.presentation.estado.EstadoFragment;
+import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
 import carlos.com.ticketsapp.utils.ActivityUtils;
 
 public class ayuda1 extends BaseActivity {
 
     @BindView(R.id.btn_adelante)
     ImageView adelante;
+    @BindView(R.id.salir)
+    ImageView salir;
 
 
 
@@ -50,12 +53,16 @@ public class ayuda1 extends BaseActivity {
         return true;
     }
 
-    @OnClick({R.id.btn_adelante})
+    @OnClick({R.id.btn_adelante,R.id.salir})
     public void onclick(View view){
         switch (view.getId()){
 
             case R.id.btn_adelante:
                 nextActivity(ayuda1.this,null,ayuda2.class,false);
+                overridePendingTransition(R.anim.left_in,R.anim.left_out);
+                break;
+            case R.id.salir:
+                nextActivity(ayuda1.this,null,PrincipalActivity.class,false);
                 break;
         }
     }

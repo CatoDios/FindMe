@@ -25,6 +25,8 @@ import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 
 public class HistorialFragment extends BaseFragment implements HistorialContract.View{
     Unbinder unbinder;
+    @BindView(R.id.error)
+    RelativeLayout error;
     @BindView(R.id.cuerpo)
     RelativeLayout cuerpo;
     ProgressBar progressBar;
@@ -89,7 +91,14 @@ public class HistorialFragment extends BaseFragment implements HistorialContract
     public void getFaltas(ArrayList<FaltaEntity> body) {
         progressBar.setVisibility(View.GONE);
         cuerpo.setVisibility(View.VISIBLE);
+        error.setVisibility(View.GONE);
         mAdapter.setItems(body);
+    }
+
+    @Override
+    public void error() {
+        progressBar.setVisibility(View.GONE);
+        error.setVisibility(View.VISIBLE);
     }
 
     @Override

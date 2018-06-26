@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.CameraSource;
@@ -24,19 +25,26 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
+import carlos.com.ticketsapp.data.local.SessionManager;
 
 public class scanerActivity extends BaseActivity {
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     Context mContext;
     @BindView(R.id.camera_preview)
     SurfaceView cameraPreview;
-
+    @BindView(R.id.codigo)
+    TextView codigo;
+    @BindView(R.id.codigo_final)
+    TextView codigo_final;
+    SessionManager mSessionManager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_escanear);
         ButterKnife.bind(this);
         mContext=this.getBaseContext();
+        mSessionManager=new SessionManager(getApplicationContext());
+        codigo.setText(mSessionManager.getUserEntity().getCodigo()+"=");
 
         if (ContextCompat.checkSelfPermission(scanerActivity.this,
                 Manifest.permission.CAMERA)
@@ -67,7 +75,7 @@ public class scanerActivity extends BaseActivity {
                         | Barcode.CODE_39
                         | Barcode.CODE_93
                         | Barcode.CODE_128
-                        | Barcode.CODABAR| Barcode.QR_CODE
+                        | Barcode.CODABAR
         ).build();
         final CameraSource cameraSource = new CameraSource.Builder(this, barcodeDetector).
                 setAutoFocusEnabled(true)
@@ -116,6 +124,7 @@ public class scanerActivity extends BaseActivity {
                     Intent intent=new Intent();
                     intent.putExtra("barcode", (Parcelable) barcodes.valueAt(0));
                     setResult(CommonStatusCodes.SUCCESS,intent);
+                    //codigo_final.setText(barcodes.valueAt(0).toString());
                     finish();
                 }
             }

@@ -25,5 +25,6 @@ public class HoyContract {
         void validarUser(ValidarEntity body);
 
 
+        void error();
     }
 }

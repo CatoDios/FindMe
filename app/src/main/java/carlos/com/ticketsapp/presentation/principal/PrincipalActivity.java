@@ -39,6 +39,7 @@ import carlos.com.ticketsapp.presentation.principal.BottomBar.Historial.Historia
 import carlos.com.ticketsapp.presentation.principal.BottomBar.Hoy.HoyFragment;
 import carlos.com.ticketsapp.presentation.principal.BottomBar.Semana.SemanaFragment;
 import carlos.com.ticketsapp.presentation.profile.ProfileActivity;
+import carlos.com.ticketsapp.presentation.semanal.semanaActivity;
 import carlos.com.ticketsapp.presentation.splash.InicioActivity;
 
 /**
@@ -69,6 +70,7 @@ public class PrincipalActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        toolbar.setTitle("Inicio");
         mSessionManager = new SessionManager(this);
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -180,7 +182,12 @@ public class PrincipalActivity extends BaseActivity {
                                 //Intent intent = new Intent(TicketsActivity.this , ProfileActivity.class);
                                 //startActivityForResult(intent, 7);
                                 break;
-
+                            case R.id.ac_menu:
+                                nextActivity(PrincipalActivity.this,null, semanaActivity.class,false);
+                                break;
+                            case R.id.ac_perfil:
+                                nextActivity(PrincipalActivity.this, null, ProfileActivity.class, false);
+                                break;
                             /*
                             case R.id.ac_validar:
                                 next(PrincipalActivity.this, null, ValidacionActivity.class, false);

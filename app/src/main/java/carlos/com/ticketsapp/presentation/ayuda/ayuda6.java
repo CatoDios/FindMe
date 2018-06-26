@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import carlos.com.ticketsapp.R;
 import carlos.com.ticketsapp.core.BaseActivity;
+import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
 
 public class ayuda6 extends BaseActivity{
 
@@ -41,11 +42,18 @@ public class ayuda6 extends BaseActivity{
         return true;
     }
 
-    @OnClick({R.id.boton_atras})
+    @OnClick({R.id.boton_atras,R.id.salir})
     public void onclick(View view){
         switch (view.getId()){
             case R.id.boton_atras:
                 nextActivity(ayuda6.this,null,ayuda5.class,false);
+                overridePendingTransition(R.anim.right_in,R.anim.right_out);
+
+                break;
+            case R.id.salir:
+                nextActivity(ayuda6.this,null,PrincipalActivity.class,false);
+
+
                 break;
 
         }

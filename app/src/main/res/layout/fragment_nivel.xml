@@ -10,11 +10,14 @@
         android:id="@+id/barcode_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="codigo"/>
+        android:text=""/>
 
     <RelativeLayout
         android:id="@+id/nivel1"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -30,7 +33,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/nivel2"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"

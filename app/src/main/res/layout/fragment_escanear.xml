@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-
+<RelativeLayout
+    android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="80dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Escanee carnet con codigo"/>
+        <TextView
+            android:id="@+id/codigo"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="100dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15200197="/>
+        <TextView
+            android:id="@+id/codigo_final"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="120dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="15200197"/>
+    </RelativeLayout>
 
     <SurfaceView
         android:id="@+id/camera_preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+</RelativeLayout>

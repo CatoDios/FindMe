@@ -36,6 +36,8 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
 
     Bundle bundle;
 
+    @BindView(R.id.error)
+    RelativeLayout error;
     @BindView(R.id.cuerpo)
     RelativeLayout cuerpo;
 
@@ -106,6 +108,7 @@ ProgressBar progressBar;
     public void getMenu(ArrayList<ComidaEntity> body) {
             progressBar.setVisibility(View.GONE);
             cuerpo.setVisibility(View.VISIBLE);
+            error.setVisibility(View.GONE);
             ComidaEntity desayuno=body.get(0);
             ComidaEntity almuerzo=body.get(1);
             ComidaEntity cena = body.get(2);
@@ -127,6 +130,12 @@ ProgressBar progressBar;
         Toast.makeText(getContext(), String.valueOf(body.getEstado()), Toast.LENGTH_SHORT).show();
 
         //nextActivity(getActivity(), null, MapaActivity.class, false);
+    }
+
+    @Override
+    public void error() {
+        progressBar.setVisibility(View.GONE);
+        error.setVisibility(View.VISIBLE);
     }
 
     @Override

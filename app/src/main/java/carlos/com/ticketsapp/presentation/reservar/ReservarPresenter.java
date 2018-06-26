@@ -107,4 +107,45 @@ public class ReservarPresenter implements ReservarContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void finalizarCola() {
+        GetRequest postRequest =
+                ServiceFactory.createService(GetRequest.class);
+        TicketEnvio ticketEnvio=new TicketEnvio();
+        ticketEnvio.setIdTicket(0);
+        ticketEnvio.setNumero(0);
+        ticketEnvio.setEstado("RESERVADO");
+        ticketEnvio.setIdComida(Integer.valueOf(mSessionManager.getIdComida()));
+        ticketEnvio.setIdNt(Integer.valueOf(mSessionManager.getIdNivelturno()));
+        ticketEnvio.setIdUsuario(mSessionManager.getUserEntity().idUsuario);
+        Call<RetornoEntity> call = postRequest.reservarColaTicket(ticketEnvio);
+        call.enqueue(new Callback<RetornoEntity>() {
+            @Override
+            public void onResponse(Call<RetornoEntity> call, Response<RetornoEntity> response) {
+                if (!mView.isActive()) {
+                    return;
+                }
+
+                if (response.isSuccessful()) {
+                    mView.reservadoCola(response.body());
+                    // mView.showMessage("noticias obtenidas");
+                    //openSession(token, response.body());
+
+                } else {
+                    mView.setLoadingIndicator(false);
+                    mView.showErrorMessage("Ocurrió un error al obtener las noticias");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RetornoEntity> call, Throwable t) {
+                if (!mView.isActive()) {
+                    return;
+                }
+                mView.setLoadingIndicator(false);
+                mView.showErrorMessage("Fallo al traer datos, comunicarse con su administrador");
+            }
+        });
+    }
 }

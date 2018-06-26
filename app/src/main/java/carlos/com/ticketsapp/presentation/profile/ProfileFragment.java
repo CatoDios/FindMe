@@ -26,8 +26,7 @@ public class ProfileFragment extends BaseFragment {
     TextView tvCodigo;
     @BindView(R.id.tv_dni)
     TextView tvDNI;
-    @BindView(R.id.tv_correo)
-    TextView tvCorreo;
+
     @BindView(R.id.tv_telefono)
     TextView tvTelefono;
 
@@ -70,9 +69,9 @@ public class ProfileFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         tvNombre.setText(mUser.getNombres());
-        tvCodigo.setText(mUser.getCodigo());
-        tvDNI.setText(mUser.getDni());
-        tvCorreo.setText(mUser.getUser()+"@unmsm.edu.pe");
-        tvTelefono.setText(mUser.getTelefono());
+        tvCodigo.setText("Codigo: "+mUser.getCodigo());
+        tvDNI.setText("DNI: "+mUser.getDni());
+
+        tvTelefono.setText("Telefono: "+mUser.getTelefono());
     }
 }

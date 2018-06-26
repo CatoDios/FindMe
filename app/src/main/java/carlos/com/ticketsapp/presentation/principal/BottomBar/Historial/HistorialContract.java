@@ -16,6 +16,8 @@ public class HistorialContract {
         boolean isActive();
 
         void getFaltas(ArrayList<FaltaEntity> body);
+
+        void error();
     }
     interface Presenter extends BasePresenter {
         void getFaltas();

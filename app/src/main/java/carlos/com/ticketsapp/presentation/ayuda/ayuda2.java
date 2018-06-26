@@ -47,9 +47,12 @@ public class ayuda2 extends BaseActivity {
         switch (view.getId()){
             case R.id.boton_atras:
                 nextActivity(ayuda2.this,null,ayuda1.class,false);
+                overridePendingTransition(R.anim.right_in,R.anim.right_out);
                 break;
             case R.id.btn_adelante:
                 nextActivity(ayuda2.this,null,ayuda3.class,false);
+                overridePendingTransition(R.anim.left_in,R.anim.left_out);
+
                 break;
         }
     }

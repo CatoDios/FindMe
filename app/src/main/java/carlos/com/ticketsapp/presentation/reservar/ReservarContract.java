@@ -11,6 +11,8 @@ public class ReservarContract {
         void finalizar();
 
         void getNT();
+
+        void finalizarCola();
     }
     interface View extends BaseView<Presenter>{
 
@@ -19,5 +21,7 @@ public class ReservarContract {
         void reservado(RetornoEntity body);
 
         void ponerNT(RespuestaNT body);
+
+        void reservadoCola(RetornoEntity body);
     }
 }

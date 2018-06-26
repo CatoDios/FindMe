@@ -59,7 +59,7 @@ public class HoyPresenter implements HoyContract.Presenter{
                     return;
                 }
                 mView.setLoadingIndicator(false);
-                mView.showErrorMessage("Fallo al traer datos, comunicarse con su administrador");
+                mView.error();
             }
         });
     }

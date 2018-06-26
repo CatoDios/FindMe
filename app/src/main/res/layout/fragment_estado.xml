@@ -247,6 +247,39 @@
     </RelativeLayout>
 
 
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/error"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:elevation="7dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:tint="@color/black"
+                    android:elevation="4dp"
 
+                    android:src="@drawable/ic_baseline_cloud_off_24px"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+            </RelativeLayout>
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No se pudo traer los datos"/>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

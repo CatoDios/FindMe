@@ -37,13 +37,17 @@ public interface GetRequest {
 
     @GET("tick-app-jdbc-client/ticket/validar/cantidad/{id_comida}/{id_nivelTurno}")
     Call<ValidarEntity> validarCantidad(@Path("id_comida") String id_comida, @Path("id_nivelTurno") String nivelTurno);
-    @GET(" tick-app-jdbc-client/ticket/nivelturno/comida/listar/{id_usuario}")
+    @GET("tick-app-jdbc-client/ticket/nivelturno/comida/listar/{id_usuario}")
     Call<EstadoEntity> verEstado(@Path("id_usuario") int id_usuario);
     @PUT("tick-app-jdbc-client/ticket/cancelar")
     Call<CancelarResponse> cancelarTicket(@Body CancelarRequest cancelarRequest);
-    @GET(" tick-app-jdbc-client/nivelturno/listar/{id_comida}/{nivel}/{turno}")
+    @GET("tick-app-jdbc-client/nivelturno/listar/{id_comida}/{nivel}/{turno}")
     Call<RespuestaNT> getNT(@Path("id_comida") String id_comida, @Path("nivel") String nivel, @Path("turno") String turno);
-    @POST(" https://tick-app-zuul.herokuapp.com/tick-app-jdbc-client/ticket/add")
+
+
+    @POST("tick-app-jdbc-client/ticket/add/cola")
+    Call<RetornoEntity> reservarColaTicket(@Body TicketEnvio ticketEnvio);
+    @POST("tick-app-jdbc-client/ticket/add")
     Call<RetornoEntity> reservarTicket(@Body TicketEnvio ticketEnvio);
 
 }

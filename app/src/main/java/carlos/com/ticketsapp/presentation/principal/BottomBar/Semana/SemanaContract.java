@@ -16,6 +16,8 @@ public class SemanaContract  {
         void getMenuSemana(SemanaResponse body);
 
         void clickItemCategorias(Semana_card comidaEntity);
+
+        void error();
     }
     interface Presenter extends BasePresenter{
 

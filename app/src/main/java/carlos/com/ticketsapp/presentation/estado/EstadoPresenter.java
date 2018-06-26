@@ -61,7 +61,7 @@ public class EstadoPresenter implements EstadoContract.Presenter {
                     return;
                 }
                 mView.setLoadingIndicator(false);
-                mView.showErrorMessage("Fallo al traer datos, comunicarse con su administrador");
+                mView.error();
             }
         });
     }

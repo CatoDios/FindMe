@@ -8,7 +8,10 @@
 
     <RelativeLayout
         android:id="@+id/turno1"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -24,7 +27,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/turno2"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -40,7 +46,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/turno3"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -56,7 +65,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/turno4"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -72,7 +84,10 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/turno5"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_login"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Reservar"
+        android:textColor="@color/white"
         android:layout_margin="15dp"
         android:gravity="center"
         android:layout_width="match_parent"

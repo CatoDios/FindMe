@@ -17,6 +17,7 @@ import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.presentation.mapa.MapaActivity;
+import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
 
 public class TipoFragment extends BaseFragment  implements TipoContract.View{
 @BindView(R.id.desayuno)
@@ -106,8 +107,9 @@ TipoContract.Presenter mPresenter;
     @Override
     public void validarUser(ValidarEntity body) {
             if(body.getEstado()==0){
-                //Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
-                nextActivity(getActivity(),null,MapaActivity.class,false);
+                Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
+                nextActivity(getActivity(),null,PrincipalActivity.class,false);
+
 
             }else{
                 nextActivity(getActivity(),null,MapaActivity.class,false);

@@ -29,6 +29,8 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
+    @BindView(R.id.error)
+    RelativeLayout error;
 
     @BindView(R.id.cuerpo)
     RelativeLayout cuerpo;
@@ -40,8 +42,8 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
     private SemanaAdapter mAdapter;
     private ProgressDialogCustom mProgressDialogCustom;
 
-    public static PrincipalFragment newInstance() {
-        return new PrincipalFragment();
+    public static SemanaFragment newInstance() {
+        return new SemanaFragment();
     }
 
     @Override
@@ -129,6 +131,7 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
 
         progressBar.setVisibility(View.GONE);
         cuerpo.setVisibility(View.VISIBLE);
+        error.setVisibility(View.GONE);
         ArrayList<Semana_card> semana= new ArrayList<>();
         Semana_card lunes=new Semana_card();
         lunes.setDia("LUNES");
@@ -188,5 +191,11 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
     @Override
     public void clickItemCategorias(Semana_card comidaEntity) {
         //nextActivity(getActivity(),null, DetallesActivity.class,false);
+    }
+
+    @Override
+    public void error() {
+        progressBar.setVisibility(View.GONE);
+        error.setVisibility(View.VISIBLE);
     }
 }

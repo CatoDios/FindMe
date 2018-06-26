@@ -5,13 +5,13 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/ayuda1"
-            android:layout_width="300dp"
-            android:layout_height="350dp" />
+            android:src="@drawable/ayuda_6"
+            android:layout_width="380dp"
+            android:layout_height="420dp" />
     </LinearLayout>
 
 
@@ -22,22 +22,22 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="150dp">
-        <!--<ImageView
-            android:id="@+id/btn_adelante"
+        --<ImageView
+            android:id="@+id/salir"
             android:padding="10dp"
             android:tint="@color/white"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/baseline_arrow_forward_ios_white_18dp"
-            />-->
+            android:src="@drawable/ic_baseline_clear_24px"
+            />
         <ImageView
             android:id="@+id/boton_atras"
             android:padding="10dp"
             android:tint="@color/white"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="15dp"
             android:layout_alignParentLeft="true"
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -60,15 +60,16 @@
                 android:layout_height="wrap_content"
                 android:text="Paso 6"/>
             <TextView
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aqui va la primera linea"/>
+                android:text="Tu pedido se ha realizado!"/>
             <TextView
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Aqui va la segunda linea"/>
+                android:text="Confirma para terminar el proceso"/>
         </LinearLayout>
 
 

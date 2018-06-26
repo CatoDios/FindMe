@@ -46,7 +46,7 @@
             <TextView
                 android:id="@+id/tv_codigo"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="80dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -63,16 +63,7 @@
                 android:textColor="@color/white"
                 android:text="222 5555"
                 />
-            <TextView
-                android:id="@+id/tv_correo"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:text="ccopa@gmail.com"
-                />
+
             <TextView
                 android:id="@+id/tv_telefono"
                 android:layout_marginLeft="50dp"

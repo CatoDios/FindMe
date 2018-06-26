@@ -6,7 +6,7 @@
     android:layout_margin="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
         android:id="@+id/img_comida"
@@ -25,14 +25,14 @@
         />
 
     <LinearLayout
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_dia"
@@ -48,7 +48,7 @@
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="140dp">
+            android:layout_height="match_parent">
             <LinearLayout
                 android:gravity="center_vertical"
                 android:orientation="vertical"
@@ -66,13 +66,15 @@
                         android:layout_height="20dp"
                         android:src="@drawable/ic_free_breakfast_black_24dp"/>
                     <TextView
+                        android:lines="3"
+
                         android:id="@+id/tv_desayuno"
                         android:layout_marginLeft="5dp"
                         android:textSize="15sp"
                         android:textColor="@color/white"
                         android:text="Sopa de carne"
                         android:layout_width="match_parent"
-                        android:layout_height="23dp" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
 
@@ -88,13 +90,15 @@
                         android:layout_height="20dp"
                         android:src="@drawable/baseline_restaurant_white_18dp"/>
                     <TextView
+                        android:lines="3"
+
                         android:id="@+id/tv_almuerzo"
                         android:layout_marginLeft="5dp"
                         android:textSize="15sp"
                         android:textColor="@color/white"
                         android:text="Manzana"
                         android:layout_width="match_parent"
-                        android:layout_height="23dp" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,13 +111,15 @@
                         android:layout_height="20dp"
                         android:src="@drawable/baseline_room_service_white_18dp"/>
                     <TextView
+                        android:lines="3"
+
                         android:id="@+id/tv_cena"
                         android:layout_marginLeft="5dp"
                         android:textSize="15sp"
                         android:textColor="@color/white"
                         android:text="Tallarin verde"
                         android:layout_width="match_parent"
-                        android:layout_height="23dp" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
 

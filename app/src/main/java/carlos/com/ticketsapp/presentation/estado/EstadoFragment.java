@@ -36,6 +36,8 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
     @BindView(R.id.cuerpo)
     RelativeLayout cuerpo;
     ProgressBar progressBar;
+    @BindView(R.id.error)
+    RelativeLayout error;
 
     @BindView(R.id.hora_inicio)
     TextView hora_inicio;
@@ -100,7 +102,7 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
     public void verEstado(EstadoEntity body) {
         progressBar.setVisibility(View.GONE);
         cuerpo.setVisibility(View.VISIBLE);
-
+        error.setVisibility(View.GONE);
         nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat()+" "+mSessionManager.getUserEntity().getApeMat());
         comida.setText(body.getNombre());
         nivel.setText(String.valueOf(body.getNivel()));
@@ -116,6 +118,12 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
     public void cancelarTicket(CancelarResponse body) {
         Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
         newActivityClearPreview(getActivity(),null,PrincipalActivity.class);
+    }
+
+    @Override
+    public void error() {
+        progressBar.setVisibility(View.GONE);
+        error.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.cancelar)

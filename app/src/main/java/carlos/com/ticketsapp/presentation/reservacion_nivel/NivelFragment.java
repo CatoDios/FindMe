@@ -23,6 +23,8 @@ import carlos.com.ticketsapp.core.BaseFragment;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.RespuestaNT;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
+import carlos.com.ticketsapp.presentation.escanear.RespuestaActivity;
+import carlos.com.ticketsapp.presentation.escanear.RespuestaMalActivity;
 import carlos.com.ticketsapp.presentation.escanear.scanerActivity;
 import carlos.com.ticketsapp.presentation.reservacion.ReservacionFragment;
 import carlos.com.ticketsapp.presentation.reservar.ReservarActivity;
@@ -117,6 +119,8 @@ public class NivelFragment extends BaseFragment implements NivelContract.View{
     @Override
     public void validarCantidad(ValidarEntity body) {
 
+        mSessionManager.setEstadocola(body.getEstado());
+
         if (body.getEstado()==0){
             Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
 
@@ -139,7 +143,19 @@ public class NivelFragment extends BaseFragment implements NivelContract.View{
             if (resultCode== CommonStatusCodes.SUCCESS){
                 if(data!=null){
                     Barcode barcode=data.getParcelableExtra("barcode");
-                    barCodeResult.setText(barcode.displayValue);
+                    String codigo_real=barcode.displayValue.substring(2);
+                    barCodeResult.setText(mSessionManager.getUserEntity().getCodigo()+" = "+codigo_real);
+
+                    if(codigo_real.equalsIgnoreCase(mSessionManager.getUserEntity().getCodigo())){
+                        Bundle bundle=new Bundle();
+                        bundle.putString("codigoreal",mSessionManager.getUserEntity().getCodigo()+" = "+codigo_real);
+                        nextActivity(getActivity(),bundle, RespuestaActivity.class,false);
+                    }else{
+                        Bundle bundle2=new Bundle();
+                        bundle2.putString("codigoreal",mSessionManager.getUserEntity().getCodigo()+" != "+codigo_real);
+                        nextActivity(getActivity(),bundle2, RespuestaMalActivity.class,false);
+                    }
+
                     //aqui en lugar de mostrar el dato del codigo de barras, debe pasar a buscar con ese dato a otra actividad
                 }else{
                     barCodeResult.setText("No barcode found");

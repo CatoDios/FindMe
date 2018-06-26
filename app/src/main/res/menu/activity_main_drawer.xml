@@ -13,10 +13,10 @@
         android:icon="@drawable/ic_query_builder_black_24dp"
         android:title="Pedido" />
 
-    <item
+    <!--<item
         android:id="@+id/ac_notificaciones"
         android:icon="@drawable/ic_announcement_black_24dp"
-        android:title="Notificaciones" />
+        android:title="Notificaciones" />-->
     <item
         android:id="@+id/ac_ayuda"
         android:icon="@drawable/ic_headset_mic_black_24dp"

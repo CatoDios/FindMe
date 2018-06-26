@@ -59,7 +59,7 @@ public class SemanaPresenter implements SemanaContract.Presenter,ItemSemana {
                     return;
                 }
                 mView.setLoadingIndicator(false);
-                mView.showErrorMessage("Fallo al traer datos, comunicarse con su administrador");
+                mView.error();
             }
         });
     }
