@@ -3,7 +3,7 @@
 
     app:cardCornerRadius="5dp"
     android:elevation="5dp"
-    android:layout_margin="30dp"
+    android:layout_margin="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160dp"
@@ -25,14 +25,14 @@
         />
 
     <LinearLayout
-        android:paddingTop="15dp"
-        android:layout_margin="15dp"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_width="130dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/tv_dia"
@@ -47,40 +47,75 @@
 
         </RelativeLayout>
         <RelativeLayout
-            android:layout_width="160dp"
-            android:layout_height="100dp">
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
             <LinearLayout
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:tint="@color/white"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_free_breakfast_black_24dp"/>
+                    <TextView
+                        android:id="@+id/tv_desayuno"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:text="Sopa de carne"
+                        android:layout_width="match_parent"
+                        android:layout_height="23dp" />
+                </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/tv_desayuno"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Sopa de carne"
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="23dp" />
-                <TextView
-                    android:id="@+id/tv_almuerzo"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Manzana"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/baseline_restaurant_white_18dp"/>
+                    <TextView
+                        android:id="@+id/tv_almuerzo"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:text="Manzana"
+                        android:layout_width="match_parent"
+                        android:layout_height="23dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="23dp" />
-                <TextView
-                    android:id="@+id/tv_cena"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:text="Tallarin verde"
-                    android:layout_width="match_parent"
-                    android:layout_height="23dp" />
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/baseline_room_service_white_18dp"/>
+                    <TextView
+                        android:id="@+id/tv_cena"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:text="Tallarin verde"
+                        android:layout_width="match_parent"
+                        android:layout_height="23dp" />
+                </LinearLayout>
+
 
 
             </LinearLayout>

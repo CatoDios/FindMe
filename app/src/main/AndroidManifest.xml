@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="carlos.com.ticketsapp">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -33,6 +34,15 @@
         <activity android:name=".presentation.reservar.ReservarActivity"></activity>
         <activity android:name=".presentation.tipo.TipoActivity"></activity>
         <activity android:name=".presentation.estado.EstadoActivity"></activity>
+        <activity android:name=".presentation.escanear.scanerActivity"></activity>
+        <activity android:name=".presentation.ayuda.ayuda1"></activity>
+        <activity android:name=".presentation.ayuda.ayuda2"></activity>
+        <activity android:name=".presentation.ayuda.ayuda3"></activity>
+        <activity android:name=".presentation.ayuda.ayuda4"></activity>
+        <activity android:name=".presentation.ayuda.ayuda5"></activity>
+        <activity android:name=".presentation.ayuda.ayuda6"></activity>
+
+
 
 
 
@@ -40,7 +50,9 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"
             />
-
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="barcode"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_key"/>

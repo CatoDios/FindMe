@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ import carlos.com.ticketsapp.data.models.ComidaEntity;
 import carlos.com.ticketsapp.data.models.MenuEntity;
 import carlos.com.ticketsapp.data.models.ValidarEntity;
 import carlos.com.ticketsapp.presentation.mapa.MapaActivity;
+import carlos.com.ticketsapp.presentation.principal.PrincipalActivity;
 import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 import carlos.com.ticketsapp.presentation.tipo.TipoActivity;
 import carlos.com.ticketsapp.utils.ProgressDialogCustom;
@@ -31,6 +35,9 @@ import carlos.com.ticketsapp.utils.ProgressDialogCustom;
 public class HoyFragment  extends BaseFragment implements HoyContract.View{
 
     Bundle bundle;
+
+    @BindView(R.id.cuerpo)
+    RelativeLayout cuerpo;
 
     @BindView(R.id.reservar)
     Button btnReservar;
@@ -42,7 +49,7 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
     TextView tv_cena;
 
     Unbinder unbinder;
-
+ProgressBar progressBar;
     SessionManager mSessionManager;
 
     HoyContract.Presenter mPresenter;
@@ -79,6 +86,15 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mProgressDialogCustom = new ProgressDialogCustom(getContext(), "Obteniendo datos...");
+        //setLoadingIndicator(true);
+        progressBar = new ProgressBar(getContext(),null,android.R.attr.progressBarStyleLarge);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        RelativeLayout layout = getActivity().findViewById(R.id.root);
+        layout.addView(progressBar,params);
+        progressBar.setVisibility(View.VISIBLE);  //To show ProgressBar
+        cuerpo.setVisibility(View.GONE);
+        // To Hide ProgressBar
     }
 
     @Override
@@ -88,6 +104,8 @@ public class HoyFragment  extends BaseFragment implements HoyContract.View{
 
     @Override
     public void getMenu(ArrayList<ComidaEntity> body) {
+            progressBar.setVisibility(View.GONE);
+            cuerpo.setVisibility(View.VISIBLE);
             ComidaEntity desayuno=body.get(0);
             ComidaEntity almuerzo=body.get(1);
             ComidaEntity cena = body.get(2);

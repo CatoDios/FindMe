@@ -129,6 +129,6 @@ public class ReservarFragment extends BaseFragment implements ReservarContract.V
 
     @OnClick(R.id.confirmar)
     public void onclick(View view){
-        nextActivityNewTask(getActivity(),null, PrincipalActivity.class,true);
+        nextActivity(getActivity(),null, PrincipalActivity.class,true);
     }
 }

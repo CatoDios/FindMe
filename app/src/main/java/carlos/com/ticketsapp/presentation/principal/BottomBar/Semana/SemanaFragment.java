@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,9 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
     @BindView(R.id.rv_list)
     RecyclerView rvList;
 
+    @BindView(R.id.cuerpo)
+    RelativeLayout cuerpo;
+    ProgressBar progressBar;
     private LinearLayoutManager mLayoutManager;
 
     Unbinder unbinder;
@@ -49,6 +54,13 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mProgressDialogCustom = new ProgressDialogCustom(getContext(), "Obteniendo datos...");
+        progressBar = new ProgressBar(getContext(),null,android.R.attr.progressBarStyleLarge);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        RelativeLayout layout = getActivity().findViewById(R.id.root);
+        layout.addView(progressBar,params);
+        progressBar.setVisibility(View.VISIBLE);  //To show ProgressBar
+        cuerpo.setVisibility(View.GONE);
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mAdapter = new SemanaAdapter(new ArrayList<Semana_card>(), getContext(),(ItemSemana) mPresenter);
@@ -113,6 +125,10 @@ public class SemanaFragment extends BaseFragment implements SemanaContract.View{
 
     @Override
     public void getMenuSemana(SemanaResponse body) {
+
+
+        progressBar.setVisibility(View.GONE);
+        cuerpo.setVisibility(View.VISIBLE);
         ArrayList<Semana_card> semana= new ArrayList<>();
         Semana_card lunes=new Semana_card();
         lunes.setDia("LUNES");

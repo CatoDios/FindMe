@@ -39,7 +39,7 @@ public interface GetRequest {
     Call<ValidarEntity> validarCantidad(@Path("id_comida") String id_comida, @Path("id_nivelTurno") String nivelTurno);
     @GET(" tick-app-jdbc-client/ticket/nivelturno/comida/listar/{id_usuario}")
     Call<EstadoEntity> verEstado(@Path("id_usuario") int id_usuario);
-    @PUT("tick-app-jdbc-client/ticket/cancelar}")
+    @PUT("tick-app-jdbc-client/ticket/cancelar")
     Call<CancelarResponse> cancelarTicket(@Body CancelarRequest cancelarRequest);
     @GET(" tick-app-jdbc-client/nivelturno/listar/{id_comida}/{nivel}/{turno}")
     Call<RespuestaNT> getNT(@Path("id_comida") String id_comida, @Path("nivel") String nivel, @Path("turno") String turno);

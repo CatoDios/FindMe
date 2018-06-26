@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,9 @@ import carlos.com.ticketsapp.presentation.principal.PrincipalFragment;
 
 public class HistorialFragment extends BaseFragment implements HistorialContract.View{
     Unbinder unbinder;
+    @BindView(R.id.cuerpo)
+    RelativeLayout cuerpo;
+    ProgressBar progressBar;
     HistorialContract.Presenter mPresenter;
     private LinearLayoutManager mLayoutManager;
     @BindView(R.id.rv_list)
@@ -82,12 +87,21 @@ public class HistorialFragment extends BaseFragment implements HistorialContract
 
     @Override
     public void getFaltas(ArrayList<FaltaEntity> body) {
+        progressBar.setVisibility(View.GONE);
+        cuerpo.setVisibility(View.VISIBLE);
         mAdapter.setItems(body);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        progressBar = new ProgressBar(getContext(),null,android.R.attr.progressBarStyleLarge);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        RelativeLayout layout = getActivity().findViewById(R.id.root);
+        layout.addView(progressBar,params);
+        progressBar.setVisibility(View.VISIBLE);  //To show ProgressBar
+        cuerpo.setVisibility(View.GONE);
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mAdapter = new HistorialAdapter(new ArrayList<FaltaEntity>(), getContext());

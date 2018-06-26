@@ -59,10 +59,10 @@ dependencies {
     //maps
     compile 'com.google.maps:google-maps-services:0.1.20'
     compile 'com.google.maps.android:android-maps-utils:0.5'
-    compile 'com.google.android.gms:play-services-places:11.6.2'
+    compile 'com.google.android.gms:play-services-places:15.0.1'
 
-    implementation 'com.google.android.gms:play-services-maps:11.6.2'
-    implementation 'com.google.android.gms:play-services-location:11.6.2'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
     compile 'com.inthecheesefactory.thecheeselibrary:stated-fragment-support-v4:0.9.3'
 
     //Saaripar- Validacion
@@ -82,5 +82,8 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //BarCode
+
+    compile 'com.google.android.gms:play-services-vision:15.0.2'
 
 }

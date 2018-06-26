@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,9 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
     TextView turno;
     @BindView(R.id.nivel)
     TextView nivel;
+    @BindView(R.id.cuerpo)
+    RelativeLayout cuerpo;
+    ProgressBar progressBar;
 
     @BindView(R.id.hora_inicio)
     TextView hora_inicio;
@@ -93,6 +98,8 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
 
     @Override
     public void verEstado(EstadoEntity body) {
+        progressBar.setVisibility(View.GONE);
+        cuerpo.setVisibility(View.VISIBLE);
 
         nombre.setText(mSessionManager.getUserEntity().getNombres()+" "+mSessionManager.getUserEntity().getApePat()+" "+mSessionManager.getUserEntity().getApeMat());
         comida.setText(body.getNombre());
@@ -107,12 +114,24 @@ public class EstadoFragment extends BaseFragment implements EstadoContract.View{
 
     @Override
     public void cancelarTicket(CancelarResponse body) {
-        Toast.makeText(getContext(), "cancelado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), body.getMensaje(), Toast.LENGTH_SHORT).show();
         newActivityClearPreview(getActivity(),null,PrincipalActivity.class);
     }
 
     @OnClick(R.id.cancelar)
     public void onclick(View view){
         mPresenter.cancelarTicket(idTicket);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        progressBar = new ProgressBar(getContext(),null,android.R.attr.progressBarStyleLarge);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(100,100);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        RelativeLayout layout = getActivity().findViewById(R.id.root);
+        layout.addView(progressBar,params);
+        progressBar.setVisibility(View.VISIBLE);  //To show ProgressBar
+        cuerpo.setVisibility(View.GONE);
     }
 }

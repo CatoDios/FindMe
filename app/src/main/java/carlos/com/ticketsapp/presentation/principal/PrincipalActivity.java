@@ -32,6 +32,7 @@ import carlos.com.ticketsapp.core.BaseActivity;
 import carlos.com.ticketsapp.data.local.SessionManager;
 import carlos.com.ticketsapp.data.models.UserEntity;
 import carlos.com.ticketsapp.presentation.auth.LoginActivity;
+import carlos.com.ticketsapp.presentation.ayuda.ayuda1;
 import carlos.com.ticketsapp.presentation.estado.EstadoActivity;
 import carlos.com.ticketsapp.presentation.estado.EstadoFragment;
 import carlos.com.ticketsapp.presentation.principal.BottomBar.Historial.HistorialFragment;
@@ -173,6 +174,12 @@ public class PrincipalActivity extends BaseActivity {
                             case R.id.ac_Pedido:
                                 nextActivity(PrincipalActivity.this,null, EstadoActivity.class,false);
                                 break;
+                            case R.id.ac_ayuda:
+                                nextActivity(PrincipalActivity.this,null, ayuda1.class,false);
+
+                                //Intent intent = new Intent(TicketsActivity.this , ProfileActivity.class);
+                                //startActivityForResult(intent, 7);
+                                break;
 
                             /*
                             case R.id.ac_validar:
@@ -191,10 +198,7 @@ public class PrincipalActivity extends BaseActivity {
                                 //startActivityForResult(intent, 7);
                                 break;
 
-                            case R.id.ac_ayuda:
-                                //Intent intent = new Intent(TicketsActivity.this , ProfileActivity.class);
-                                //startActivityForResult(intent, 7);
-                                break;
+
 
                             case R.id.ac_salir:
                                 CloseSession();
