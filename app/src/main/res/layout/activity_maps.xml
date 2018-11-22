@@ -3,39 +3,14 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.mapa.MapaActivity"/>
 
-    <RelativeLayout
-        android:id="@+id/barra_estado"
-        android:background="#14A855"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-
-        >
-
-        <TextView
-            android:textSize="17sp"
-            android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TE ENCUENTRAS EN SAN MARCOS"/>
-
-    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_reservar"
         android:elevation="5dp"
         android:textColor="@color/white"
-        android:text="Reservar"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="siguiente paso"
+        android:backgroundTint="@color/green"
         android:background="@drawable/boton_login"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"

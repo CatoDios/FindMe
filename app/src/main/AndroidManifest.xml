@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="carlos.com.ticketsapp">
+    package="carlos.com.findme">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.splash.InicioActivity"
+        <activity android:name="carlos.com.findme.presentation.splash.InicioActivity"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,28 +24,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.registro.RegistroActivity"></activity>
-        <activity android:name=".presentation.auth.LoginActivity"></activity>
-        <activity android:name=".presentation.principal.PrincipalActivity"></activity>
-        <activity android:name=".presentation.auth.LoadActivity"></activity>
-        <activity android:name=".presentation.profile.ProfileActivity"></activity>
-        <activity android:name=".presentation.principal.BottomBar.DetallesMenu.DetallesActivity"></activity>
-        <activity android:name=".presentation.mapa.MapaActivity"></activity>
-        <activity android:name=".presentation.reservacion.ReservacionActivity"></activity>
-        <activity android:name=".presentation.reservacion_nivel.NivelActivity"></activity>
-        <activity android:name=".presentation.reservar.ReservarActivity"></activity>
-        <activity android:name=".presentation.tipo.TipoActivity"></activity>
-        <activity android:name=".presentation.estado.EstadoActivity"></activity>
-        <activity android:name=".presentation.escanear.scanerActivity"></activity>
-        <activity android:name=".presentation.ayuda.ayuda1"></activity>
-        <activity android:name=".presentation.ayuda.ayuda2"></activity>
-        <activity android:name=".presentation.ayuda.ayuda3"></activity>
-        <activity android:name=".presentation.ayuda.ayuda4"></activity>
-        <activity android:name=".presentation.ayuda.ayuda5"></activity>
-        <activity android:name=".presentation.ayuda.ayuda6"></activity>
-        <activity android:name=".presentation.escanear.RespuestaActivity"></activity>
-        <activity android:name=".presentation.escanear.RespuestaMalActivity"></activity>
-        <activity android:name=".presentation.semanal.semanaActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.reportar.ReportarActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.auth.LoginActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.principal.PrincipalActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.auth.LoadActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.profile.ProfileActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.principal.BottomBar.DetallesMenu.DetallesActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.mapa.MapaActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.reportar2.ReservacionActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.seguimiento.NivelActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.reservar.ReservarActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.tipo.TipoActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.estado.EstadoActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.escanear.scanerActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.ayuda.ayuda1"></activity>
+        <activity android:name="carlos.com.findme.presentation.ayuda.ayuda2"></activity>
+        <activity android:name="carlos.com.findme.presentation.ayuda.ayuda3"></activity>
+        <activity android:name="carlos.com.findme.presentation.ayuda.ayuda4"></activity>
+        <activity android:name="carlos.com.findme.presentation.ayuda.ayuda5"></activity>
+        <activity android:name="carlos.com.findme.presentation.ayuda.ayuda6"></activity>
+        <activity android:name="carlos.com.findme.presentation.escanear.RespuestaActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.escanear.RespuestaMalActivity"></activity>
+        <activity android:name="carlos.com.findme.presentation.semanal.semanaActivity"></activity>
+        <activity android:name=".presentation.ayudar.AyudarActivity"></activity>
+        <activity android:name=".presentation.ayudar.AyudarEspecificoActivity"></activity>
 
 
 
