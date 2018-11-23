@@ -28,6 +28,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -45,9 +46,8 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
 
     Circle circle;
     TextView tvLatitud;
-
-
     TextView tvLongitud;
+    LatLng center;
 
 
     private final String LOG_TAG="App";
@@ -93,6 +93,8 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
                 markerOptions.position(latLng);
                 markerOptions.title("Current Position");
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+                markerOptions.snippet("Mueve si es necesario");
+                markerOptions.draggable(true);
                 mCurrLocationMarker = mMap.addMarker(markerOptions);
 
                 //move map camera
@@ -101,6 +103,8 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
         }
 
     };
+    private Float xlatori;
+    private Float xlonori;
 
     @Override
     protected void onPause() {
@@ -129,22 +133,28 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         /*mGoogleApiClient=new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();*/
         ButterKnife.bind(this);
-        Bundle arg=new Bundle();
-        arg=getIntent().getExtras();
         setContentView(R.layout.activity_maps);
         Button reservar=(Button)findViewById(R.id.btn_reservar);
-        final Bundle finalArg = arg;
         reservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next(MapaActivity.this, finalArg,ReservacionActivity.class,false);
+
+                CameraPosition camPos=mMap.getCameraPosition();
+                LatLng coordenadas=camPos.target;
+                double latitud=coordenadas.latitude;
+                double longitud=coordenadas.longitude;
+
+                Bundle arg=new Bundle();
+                arg=getIntent().getExtras();
+                arg.putDouble("latitud",latitud);
+                arg.putDouble("longitud",longitud);
+                next(MapaActivity.this, arg,ReservacionActivity.class,false);
             }
         });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -152,7 +162,7 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
 
         mapFrag= (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        //mapFrag.getMapAsync(this);
+        mapFrag.getMapAsync(this);
 
 
 
@@ -175,7 +185,7 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
 
         mLocationRequest = new LocationRequest();
 
-        mLocationRequest.setInterval(20000); // two minute interval
+        mLocationRequest.setInterval(90000000); // two minute interval
 
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
@@ -245,6 +255,8 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
                         MY_PERMISSIONS_REQUEST_LOCATION );
             }
         }
+
+
     }
 
 

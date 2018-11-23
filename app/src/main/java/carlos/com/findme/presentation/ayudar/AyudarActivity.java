@@ -33,11 +33,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import carlos.com.findme.R;
 import carlos.com.findme.core.BaseActivity;
+import carlos.com.findme.data.models.desaparicion.Desaparecido;
+import carlos.com.findme.data.models.desaparicion.ServicioDesaparecido;
 import carlos.com.findme.presentation.mapa.MapaActivity;
+import io.realm.Realm;
 
 import static carlos.com.findme.presentation.mapa.MapaActivity.MY_PERMISSIONS_REQUEST_LOCATION;
 
@@ -94,11 +98,13 @@ public class AyudarActivity extends BaseActivity implements OnMapReadyCallback {
                 mCurrLocationMarker = mMap.addMarker(markerOptions);
 
                 //move map camera
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
             }
         }
 
     };
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +123,7 @@ public class AyudarActivity extends BaseActivity implements OnMapReadyCallback {
 
         mLocationRequest = new LocationRequest();
 
-        mLocationRequest.setInterval(20000); // two minute interval
+        mLocationRequest.setInterval(9000000); // two minute interval
 
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
@@ -157,6 +163,13 @@ public class AyudarActivity extends BaseActivity implements OnMapReadyCallback {
                 nextActivity(AyudarActivity.this,null,AyudarEspecificoActivity.class,false);
             }
         });
+        ServicioDesaparecido servicioDesaparecido= new ServicioDesaparecido(Realm.getDefaultInstance());
+        ArrayList<Desaparecido> desaparecidos = servicioDesaparecido.getDesaparecidos();
+        for (Desaparecido desaparecido:desaparecidos){
+            LatLng latLng=new LatLng(desaparecido.getLatitud(),desaparecido.getLongitud());
+            mMap.addMarker(new MarkerOptions().title(desaparecido.getNombres()).position(latLng));
+
+        }
     }
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private void checkLocationPermission() {

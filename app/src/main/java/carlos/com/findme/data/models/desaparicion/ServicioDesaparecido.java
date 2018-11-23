@@ -23,7 +23,9 @@ public class ServicioDesaparecido {
              String color_piel,
              String otros,
                                   String fecha,
-                                  String hora
+                                  String hora,
+                                  Double latitud,
+                                  Double longitud
     ){
         realm.beginTransaction();
         Random aleatorio=new Random(System.currentTimeMillis());
@@ -38,6 +40,8 @@ public class ServicioDesaparecido {
         desaparecido.setOtros(otros);
         desaparecido.setFecha(fecha);
         desaparecido.setHora(hora);
+        desaparecido.setLatitud(latitud);
+        desaparecido.setLongitud(longitud);
         realm.commitTransaction();
 
     }

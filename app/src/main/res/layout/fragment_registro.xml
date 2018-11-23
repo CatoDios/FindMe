@@ -39,7 +39,8 @@
                 android:id="@+id/et_talla"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Talla" />
+                android:hint="Talla"
+                android:inputType="numberDecimal" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -76,7 +77,8 @@
                 android:id="@+id/et_edad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Edad" />
+                android:hint="Edad"
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
 

@@ -72,7 +72,9 @@ public class ReservacionFragment extends BaseFragment {
                 args.getInt("edad"),
                 args.getFloat("talla"),
                 "negro",
-                "blanco",args.getString("otros"),etFecha.getText().toString(),etHora.getText().toString());
+                "blanco",args.getString("otros"),etFecha.getText().toString(),etHora.getText().toString(),
+                args.getDouble("latitud"),
+                args.getDouble("longitud"));
         nextActivity(getActivity(),null, PrincipalActivity.class,true);
 
     }

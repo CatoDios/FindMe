@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -77,7 +79,7 @@ public class PrincipalActivity extends BaseActivity {
         toolbar.setTitle("Inicio");
         mSessionManager = new SessionManager(this);
         Realm.init(this);
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded()
                 .name("findme").schemaVersion(1).build();
         Realm.setDefaultConfiguration(realmConfiguration);
 
@@ -110,8 +112,10 @@ public class PrincipalActivity extends BaseActivity {
 
         ServicioDesaparecido servicioDesaparecido=new ServicioDesaparecido(Realm.getDefaultInstance());
         ArrayList<Desaparecido> desaparecidos=servicioDesaparecido.getDesaparecidos();
+        Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRkOXGOhk23Ll8401Wpi046eJgJktY_UT8lgDl1qOPRG5cC8_GgA").into(tvFoto);
         try{
             tvnombre.setText(desaparecidos.get(0).getNombres());
+
 
         }catch (IndexOutOfBoundsException e){
 

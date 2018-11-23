@@ -73,12 +73,13 @@ public class SeguimientosFragment extends BaseFragment implements ItemSeguimient
         arg.putString("color_cabello",desaparecido.getColor_cabello());
         arg.putString("color_piel",desaparecido.getColor_piel());
         arg.putInt("edad",desaparecido.getEdad());
-
         arg.putFloat("talla",desaparecido.getTalla());
         arg.putInt("pk",desaparecido.getPk());
         arg.putString("fecha",desaparecido.getFecha());
         arg.putString("hora",desaparecido.getHora());
         arg.putString("otros",desaparecido.getOtros());
+        arg.putDouble("latitud",desaparecido.getLatitud());
+        arg.putDouble("longitud",desaparecido.getLongitud());
         nextActivity(getActivity(),arg, NivelActivity.class,false);
     }
 }

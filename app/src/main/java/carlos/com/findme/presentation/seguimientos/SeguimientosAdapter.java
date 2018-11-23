@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -15,6 +17,7 @@ import butterknife.ButterKnife;
 import carlos.com.findme.R;
 import carlos.com.findme.core.LoaderAdapter;
 import carlos.com.findme.data.models.desaparicion.Desaparecido;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SeguimientosAdapter extends LoaderAdapter<Desaparecido> {
 
@@ -50,7 +53,19 @@ public class SeguimientosAdapter extends LoaderAdapter<Desaparecido> {
         final Desaparecido desaparecido = getItems().get(position);
         ((ViewHolder) holder).tvNombres.setText(desaparecido.getNombres());
 
-        //Picasso.get().load(producto_bd.getImage()).into(((ViewHolder) holder).imagen);
+        if (position%4==0){
+            Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq6CwrVLiolN2jDJ49P1_9tbQQ4_utezOdUwpTipGn2ukBmYNs").into(((ViewHolder) holder).tvFoto);
+        }else if(position%4==1){
+            Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS40JtwvAon2bBAW87bTNBTToHTSyvwO4ayb1tBj_73T65Wcl5tyw").into(((ViewHolder) holder).tvFoto);
+
+        }else if(position%4==2){
+            Picasso.get().load("https://e00-elmundo.uecdn.es/elmundosalud/imagenes/2013/07/09/noticias/1373393588_0.jpg").into(((ViewHolder) holder).tvFoto);
+
+        }else if(position%4==3){
+            Picasso.get().load("https://i.ytimg.com/vi/hfVVWtnoESg/maxresdefault.jpg").into(((ViewHolder) holder).tvFoto);
+
+        }
+
         ((ViewHolder) holder).card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +81,8 @@ public class SeguimientosAdapter extends LoaderAdapter<Desaparecido> {
         CardView card;
         @BindView(R.id.tv_nombres)
         TextView tvNombres;
-
+        @BindView(R.id.foto)
+        CircleImageView tvFoto;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

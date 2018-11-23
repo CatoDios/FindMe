@@ -47,8 +47,8 @@ public class DatosFragment extends BaseFragment {
         Bundle arg = getActivity().getIntent().getExtras();
         etNombres.setText(arg.getString("nombres"));
         etApellidos.setText(arg.getString("apellidos"));
-        tvEdad.setText(String.valueOf(arg.getFloat("talla")));
-        etCaracteristicas.setText(String.valueOf(arg.getInt("edad")));
+        tvEdad.setText(String.valueOf(arg.getInt("edad")));
+        etCaracteristicas.setText(arg.getString("otros"));
     }
 
 
