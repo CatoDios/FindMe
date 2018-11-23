@@ -136,12 +136,15 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
                 .addOnConnectionFailedListener(this)
                 .build();*/
         ButterKnife.bind(this);
+        Bundle arg=new Bundle();
+        arg=getIntent().getExtras();
         setContentView(R.layout.activity_maps);
         Button reservar=(Button)findViewById(R.id.btn_reservar);
+        final Bundle finalArg = arg;
         reservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next(MapaActivity.this,null,ReservacionActivity.class,false);
+                next(MapaActivity.this, finalArg,ReservacionActivity.class,false);
             }
         });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -149,7 +152,7 @@ public class MapaActivity extends BaseActivity implements OnMapReadyCallback{
 
         mapFrag= (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFrag.getMapAsync(this);
+        //mapFrag.getMapAsync(this);
 
 
 

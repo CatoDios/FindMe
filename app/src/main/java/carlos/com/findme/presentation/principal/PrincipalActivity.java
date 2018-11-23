@@ -16,8 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import java.util.ArrayList;
 
@@ -28,6 +26,8 @@ import carlos.com.findme.R;
 import carlos.com.findme.core.BaseActivity;
 import carlos.com.findme.data.local.SessionManager;
 import carlos.com.findme.data.models.UserEntity;
+import carlos.com.findme.data.models.desaparicion.Desaparecido;
+import carlos.com.findme.data.models.desaparicion.ServicioDesaparecido;
 import carlos.com.findme.presentation.auth.LoginActivity;
 import carlos.com.findme.presentation.ayuda.ayuda1;
 import carlos.com.findme.presentation.ayudar.AyudarActivity;
@@ -35,8 +35,12 @@ import carlos.com.findme.presentation.estado.EstadoActivity;
 import carlos.com.findme.presentation.profile.ProfileActivity;
 import carlos.com.findme.presentation.reportar.ReportarActivity;
 import carlos.com.findme.presentation.seguimiento.NivelActivity;
+import carlos.com.findme.presentation.seguimientos.SeguimientosActivity;
 import carlos.com.findme.presentation.semanal.semanaActivity;
 import carlos.com.findme.presentation.splash.InicioActivity;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 
 /**
  * Created by kath on 09/04/18.
@@ -48,9 +52,12 @@ public class PrincipalActivity extends BaseActivity {
     SessionManager mSessionManager;
 
 
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.tv_foto)
+    ImageView tvFoto;
+    @BindView(R.id.tv_nombres)
+    TextView tvnombre;
 
     private ActionBarDrawerToggle mDrawerToggle;
     public TextView tv_username;
@@ -61,13 +68,18 @@ public class PrincipalActivity extends BaseActivity {
     public ImageView imageView;
     private PrincipalFragment fragment;
 
-    private static ArrayList<Activity> activities=new ArrayList<Activity>();
+    private static ArrayList<Activity> activities = new ArrayList<Activity>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         toolbar.setTitle("Inicio");
         mSessionManager = new SessionManager(this);
+        Realm.init(this);
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name("findme").schemaVersion(1).build();
+        Realm.setDefaultConfiguration(realmConfiguration);
 
 
         /**
@@ -85,7 +97,6 @@ public class PrincipalActivity extends BaseActivity {
         ab.setDisplayShowHomeEnabled(true);
 
 
-
         //initHeader();
         //findViewById(R.id.appbar).bringToFront();
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -96,6 +107,15 @@ public class PrincipalActivity extends BaseActivity {
         fragment = (PrincipalFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.body);
 
+
+        ServicioDesaparecido servicioDesaparecido=new ServicioDesaparecido(Realm.getDefaultInstance());
+        ArrayList<Desaparecido> desaparecidos=servicioDesaparecido.getDesaparecidos();
+        try{
+            tvnombre.setText(desaparecidos.get(0).getNombres());
+
+        }catch (IndexOutOfBoundsException e){
+
+        }
 
         //ACTIVA VALIDACIÓN DE SERVICIOS
        /* if(!mSessionManager.getUserEntity().isIdValidaServicio()){
@@ -113,17 +133,17 @@ public class PrincipalActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.btn_reportar,R.id.btn_seguimiento,R.id.btn_ayudar})
-    public void onClickView(View v){
-        switch (v.getId()){
+    @OnClick({R.id.btn_reportar, R.id.btn_seguimiento, R.id.btn_ayudar})
+    public void onClickView(View v) {
+        switch (v.getId()) {
             case R.id.btn_reportar:
-                nextActivity(this,null,ReportarActivity.class,false);
+                nextActivity(this, null, ReportarActivity.class, false);
                 break;
             case R.id.btn_seguimiento:
-                nextActivity(this,null,NivelActivity.class,false);
+                nextActivity(this, null, SeguimientosActivity.class, false);
                 break;
             case R.id.btn_ayudar:
-                nextActivity(this,null,AyudarActivity.class,false);
+                nextActivity(this, null, AyudarActivity.class, false);
 
                 break;
         }
@@ -145,16 +165,16 @@ public class PrincipalActivity extends BaseActivity {
                                 break;
 
                             case R.id.ac_Pedido:
-                                nextActivity(PrincipalActivity.this,null, EstadoActivity.class,false);
+                                nextActivity(PrincipalActivity.this, null, EstadoActivity.class, false);
                                 break;
                             case R.id.ac_ayuda:
-                                nextActivity(PrincipalActivity.this,null, ayuda1.class,false);
+                                nextActivity(PrincipalActivity.this, null, ayuda1.class, false);
 
                                 //Intent intent = new Intent(TicketsActivity.this , ProfileActivity.class);
                                 //startActivityForResult(intent, 7);
                                 break;
                             case R.id.ac_menu:
-                                nextActivity(PrincipalActivity.this,null, semanaActivity.class,false);
+                                nextActivity(PrincipalActivity.this, null, semanaActivity.class, false);
                                 break;
                             case R.id.ac_perfil:
                                 nextActivity(PrincipalActivity.this, null, ProfileActivity.class, false);
@@ -210,7 +230,7 @@ public class PrincipalActivity extends BaseActivity {
         mUser = mSessionManager.getUserEntity();
 
         if (mUser != null) {
-            tv_username.setText(mUser.getNombres()+" "+mUser.getApePat());
+            tv_username.setText(mUser.getNombres() + " " + mUser.getApePat());
             tv_codigo.setText(mUser.getCodigo());
 
             imageView.setOnClickListener(new View.OnClickListener() {
@@ -225,8 +245,7 @@ public class PrincipalActivity extends BaseActivity {
             /*
             Picasso.with(getApplicationContext()).load("https://maps.googleapis.com/maps/api/staticmap?center=Albany,+NY&zoom=13&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true").into(imageView);
 */
-        }
-        else{
+        } else {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -254,14 +273,7 @@ public class PrincipalActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (this.mDrawer.isDrawerOpen(GravityCompat.START)) {
-            this.mDrawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+
 
     public void salirapp() {
 
@@ -286,7 +298,6 @@ public class PrincipalActivity extends BaseActivity {
         AlertDialog alert = builder.create();
         alert.show();
     }
-
 
 
     @Override

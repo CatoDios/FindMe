@@ -119,11 +119,11 @@
                         </android.support.constraint.ConstraintLayout>
 
                         <ImageView
-                            android:id="@+id/imageView4"
+                            android:id="@+id/tv_foto"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_marginTop="8dp"
                             android:layout_marginEnd="1dp"
+                            android:layout_marginTop="8dp"
                             android:scaleType="centerCrop"
                             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -140,12 +140,12 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <TextView
-                                android:id="@+id/textView2"
+                                android:id="@+id/tv_nombres"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp"
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="10dp"
-                                android:layout_marginBottom="16dp"
                                 android:text="Marisol Laguna"
                                 android:textColor="@color/black"
                                 app:layout_constraintBottom_toBottomOf="parent"

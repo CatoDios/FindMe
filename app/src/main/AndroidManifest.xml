@@ -48,7 +48,7 @@
         <activity android:name="carlos.com.findme.presentation.semanal.semanaActivity"></activity>
         <activity android:name=".presentation.ayudar.AyudarActivity"></activity>
         <activity android:name=".presentation.ayudar.AyudarEspecificoActivity"></activity>
-
+        <activity android:name=".presentation.seguimientos.SeguimientosActivity"></activity>
 
 
 

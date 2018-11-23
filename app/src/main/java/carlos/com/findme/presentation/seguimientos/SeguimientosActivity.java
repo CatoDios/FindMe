@@ -1,4 +1,4 @@
-package carlos.com.findme.presentation.reportar2;
+package carlos.com.findme.presentation.seguimientos;
 
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -10,14 +10,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import carlos.com.findme.R;
 import carlos.com.findme.core.BaseActivity;
+import carlos.com.findme.presentation.estado.EstadoFragment;
 import carlos.com.findme.utils.ActivityUtils;
 
-/**
- * Created by carlos on 12/06/2018.
- */
-
-public class ReservacionActivity extends BaseActivity {
-
+public class SeguimientosActivity extends BaseActivity
+{
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.body)
@@ -32,22 +29,20 @@ public class ReservacionActivity extends BaseActivity {
         ButterKnife.bind(this);
 
 
-        toolbar.setTitle("Reportar");
+        toolbar.setTitle("Mis reportes");
 
-        Bundle args=new Bundle();
-        args=getIntent().getExtras();
 
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
 
-        ReservacionFragment fragment = (ReservacionFragment) getSupportFragmentManager()
+        SeguimientosFragment fragment = (SeguimientosFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.body);
 
         if (fragment == null) {
-            fragment = ReservacionFragment.newInstance();
-            fragment.setArguments(args);
+            fragment = SeguimientosFragment.newInstance();
+
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(),
                     fragment, R.id.body);
         }
