@@ -21,7 +21,7 @@ public class Desaparecido extends RealmObject implements Serializable {
     private String hora;
     private double latitud;
     private double longitud;
-
+    private String coments;
     public double getLatitud() {
         return latitud;
     }
